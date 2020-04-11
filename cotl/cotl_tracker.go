@@ -1,19 +1,18 @@
-package cotltracker
+package cotl
 
 import (
 	"fmt"
 	"github.com/kunaldawn/goandroid/adbutility"
 	"github.com/kunaldawn/goandroid/device"
 	"github.com/kunaldawn/goandroid/input"
-	"player/cotltracker/chorder"
-	"player/cotltracker/inputter"
-	"player/cotltracker/notter"
+	"player/cotl/chorder"
+	"player/cotl/inputter"
+	"player/cotl/notter"
 	"time"
 )
 
 const (
-	adbTimeout  = 2000
-	adbEndpoint = "adb"
+	adbTimeout = 2000
 )
 
 // Tracker - Воспроизводит последовательность аккордов и нот с таймингами
@@ -24,7 +23,7 @@ type Tracker struct { // Am $C4 $B3 Bm C %200 D E %200
 }
 
 // New - Создаёт новый трекер и подключается к устройству
-func New(serial string) (*Tracker, error) {
+func New(adbEndpoint string, serial string) (*Tracker, error) {
 	// Подключение к устройству
 	dev := device.NewDevice(serial, adbTimeout, adbutility.GetNewAdbEndpoint(adbEndpoint))
 	if ok, err := dev.IsAvailable(); !ok {
@@ -49,10 +48,10 @@ func (tracker *Tracker) Play(track *Track, speed float32) error {
 
 		switch block.typ {
 		case trackBlockDelay:
-			delay := float32(int(time.Millisecond)*block.delay) * speed
+			delay := float32(int(time.Millisecond)*block.delay) * (1/speed)
 			<-time.After(time.Duration(delay))
 		case trackBlockNote:
-			if err := tracker.notter.PlayNote(block.note, track.octaveShift); err != nil {
+			if err := tracker.notter.PlayNote(block.note, track.octaveShift+track.shift); err != nil {
 				return err
 			}
 		case trackBlockChord:

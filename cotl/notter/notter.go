@@ -1,6 +1,6 @@
 package notter
 
-import "player/cotltracker/inputter"
+import "player/cotl/inputter"
 
 // Notter - Позволяет воспроизводить простые звуки
 type Notter struct {

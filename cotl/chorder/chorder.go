@@ -1,6 +1,6 @@
 package chorder
 
-import "player/cotltracker/notter"
+import "player/cotl/notter"
 
 // Chorder - Воспроизводитель аккордов
 type Chorder struct {
