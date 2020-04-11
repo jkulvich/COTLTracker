@@ -2,9 +2,9 @@
 # Developed by @jkulvich
 # https://github.com/jkulvich/COTLTracker
 
-# Symphony2 - Clean Bandit (Feat. Zara Larsson)
+# He's a Pirate
 # Arranged by @Maple
-# https://youtu.be/IcXAJJKOnn0
+# https://youtu.be/T48KtoLv90g
 
 #!TIMING:200
 #!SHIFT:0
