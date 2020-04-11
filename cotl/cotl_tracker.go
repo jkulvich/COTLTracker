@@ -49,12 +49,15 @@ func (tracker *Tracker) Play(track *Track, speed float32) error {
 		switch block.typ {
 		case trackBlockDelay:
 			delay := float32(int(time.Millisecond)*block.delay) * (1/speed)
+			fmt.Printf("COTL: DELAY: %0.0f\n", delay / 1000000)
 			<-time.After(time.Duration(delay))
 		case trackBlockNote:
+			fmt.Printf("COTL: NOTE: %v\n", block.note)
 			if err := tracker.notter.PlayNote(block.note, track.octaveShift+track.shift); err != nil {
 				return err
 			}
 		case trackBlockChord:
+			fmt.Printf("COTL: CHORD: %v\n", block.chord)
 			if err := tracker.chorder.PlayChord(block.chord); err != nil {
 				return err
 			}

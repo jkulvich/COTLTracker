@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	tapDelay = 50
+	tapDelay = 20
 )
 
 // tapScreen - Кликает на заданную кооринату экрана
@@ -14,8 +14,8 @@ func (input *Inputer) TapScreen(x, y int) error {
 	//return input.screen.Tap(x, y)
 	go func() {
 		input.screen.Swipe(x, y, x, y, 0)
-		<-time.After(time.Millisecond * tapDelay)
 	}()
+	<-time.After(time.Millisecond * tapDelay)
 	return nil
 }
 

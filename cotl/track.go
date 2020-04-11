@@ -28,7 +28,9 @@ func NewTrack(stave string) (*Track, error) {
 	}
 
 	// Применяем настройки из музыкального файла
-	track.applyConfigComments(stave)
+	if err := track.applyConfigComments(stave); err != nil {
+		return nil, err
+	}
 
 	stave = track.removeComments(stave)
 	stave = strings.ReplaceAll(stave, "\n", " ")
