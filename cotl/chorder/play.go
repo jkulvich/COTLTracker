@@ -22,10 +22,10 @@ func (chorder *Chorder) PlayChord(chord string) error {
 		"Dm": NewChord("D4 F4 A4", -4),
 
 		"E": NewChord("E4 G5 B4", -4),
-		"Em": NewChord("E4 G4 B4", -4),
+		"Em": NewChord("E5 G5 B4", -4),
 
 		"F": NewChord("F4 A5 C4", -4),
-		"Fm": NewChord("F4 A5 C4", -4),
+		"Fm": NewChord("F5 A5 C4", -4),
 
 		"G":  NewChord("G4 B4 D4", -4),
 		"Gm":  NewChord("G5 B4 D5", -4),
