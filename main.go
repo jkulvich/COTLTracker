@@ -13,8 +13,6 @@ func main() {
 	flagSerial := flag.String("serial", "", "ADB smartphone serial id")
 	flagTrack := flag.String("track", "", "path to track file")
 	flagSpeed := flag.Float64("speed", 1, "track playing speed")
-	flagT := flag.Int("timing", 200, "track timing multiplier")
-	flagShift := flag.Int("shift", 0, "additional note shift")
 	flagAdb := flag.String("adb", "adb", "path where ADB tool located")
 	flag.Parse()
 
@@ -27,14 +25,6 @@ func main() {
 	track, err := cotl.NewTrack(string(stave))
 	if err != nil {
 		log.Fatal(err)
-	}
-
-	// Кастомные настройки тайминга и сдвига
-	if *flagT != 200 {
-		track.SetTiming(*flagT)
-	}
-	if *flagShift != 0 {
-		track.SetShift(*flagShift)
 	}
 
 	// Создание нового трекер и подключение к устройству

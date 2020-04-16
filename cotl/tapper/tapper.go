@@ -1,17 +1,17 @@
-package inputter
+package tapper
 
 import (
 	"github.com/kunaldawn/goandroid/input"
 )
 
-// Inputer - Управляет вводом на смартфоне
-type Inputer struct {
+// Tapper - Управляет вводом на смартфоне
+type Tapper struct {
 	screen input.TouchScreen
 }
 
 // New - Создаёт новый экземпляр управления вводом
-func New(screen input.TouchScreen) *Inputer {
-	return &Inputer{
+func New(screen input.TouchScreen) *Tapper {
+	return &Tapper{
 		screen: screen,
 	}
 }

@@ -5,9 +5,7 @@ import (
 	"github.com/kunaldawn/goandroid/adbutility"
 	"github.com/kunaldawn/goandroid/device"
 	"github.com/kunaldawn/goandroid/input"
-	"player/cotl/chorder"
-	"player/cotl/inputter"
-	"player/cotl/notter"
+	"player/cotl/tapper"
 	"time"
 )
 
@@ -18,8 +16,7 @@ const (
 // Tracker - Воспроизводит последовательность аккордов и нот с таймингами
 // Автоматическая калибровка октавы. Смотрим на минимальную октаву и вычитаем её
 type Tracker struct { // Am $C4 $B3 Bm C %200 D E %200
-	notter  *notter.Notter
-	chorder *chorder.Chorder
+	tapper *tapper.Tapper
 }
 
 // New - Создаёт новый трекер и подключается к устройству
@@ -32,38 +29,21 @@ func New(adbEndpoint string, serial string) (*Tracker, error) {
 
 	// Получение управляющих блоков
 	screen := input.NewTouchScreen(dev)
-	inputControl := inputter.New(screen)
-	notePlayer := notter.New(inputControl)
-	chordPlayer := chorder.New(notePlayer)
 
 	return &Tracker{
-		notter:  notePlayer,
-		chorder: chordPlayer,
+		tapper: tapper.New(screen),
 	}, nil
 }
 
 // Play - Воспросизовдит записанные аккорды/ноты/задержки
 func (tracker *Tracker) Play(track *Track, speed float32) error {
 	for _, block := range track.blocks {
-
-		switch block.typ {
-		case trackBlockDelay:
-			delay := float32(int(time.Millisecond)*block.delay) * (1/speed)
-			fmt.Printf("COTL: DELAY: %0.0f\n", delay / 1000000)
-			<-time.After(time.Duration(delay))
-		case trackBlockNote:
-			fmt.Printf("COTL: NOTE: %v\n", block.note)
-			if err := tracker.notter.PlayNote(block.note, track.octaveShift+track.shift); err != nil {
-				return err
-			}
-		case trackBlockChord:
-			fmt.Printf("COTL: CHORD: %v\n", block.chord)
-			if err := tracker.chorder.PlayChord(block.chord); err != nil {
+		if block.Note != nil {
+			if err := tracker.tapper.TapNote(*block.Note); err != nil {
 				return err
 			}
 		}
-
+		<-time.After(time.Duration(block.Delay * 1000000))
 	}
-
 	return nil
 }
