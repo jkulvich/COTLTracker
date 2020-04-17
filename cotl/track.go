@@ -55,7 +55,9 @@ func NewTrack(stave string) (*Track, error) {
 	for i := range track.blocks {
 		note := track.blocks[i].Note
 		if note != nil {
-			note.ShiftNote(octaveShift + track.shift)
+			if err := note.ShiftNote(octaveShift + track.shift); err != nil {
+				return nil, err
+			}
 		}
 	}
 
