@@ -2,10 +2,9 @@ package cotl
 
 import (
 	"fmt"
-	"github.com/kunaldawn/goandroid/adbutility"
-	"github.com/kunaldawn/goandroid/device"
-	"github.com/kunaldawn/goandroid/input"
-	"player/cotl/tapper"
+	"os"
+	"player/android"
+	"player/controller"
 	"time"
 )
 
@@ -16,22 +15,28 @@ const (
 // Tracker - Воспроизводит последовательность аккордов и нот с таймингами
 // Автоматическая калибровка октавы. Смотрим на минимальную октаву и вычитаем её
 type Tracker struct { // Am $C4 $B3 Bm C %200 D E %200
-	tapper *tapper.Tapper
+	control *controller.Controller
 }
 
 // New - Создаёт новый трекер и подключается к устройству
-func New(adbEndpoint string, serial string) (*Tracker, error) {
+func New() (*Tracker, error) {
 	// Подключение к устройству
-	dev := device.NewDevice(serial, adbTimeout, adbutility.GetNewAdbEndpoint(adbEndpoint))
-	if ok, err := dev.IsAvailable(); !ok {
-		return nil, fmt.Errorf("can't connect: %s\n", err)
+	dev, err := android.New()
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
 	}
 
-	// Получение управляющих блоков
-	screen := input.NewTouchScreen(dev)
+	// Минимальная задержка между нажатиями клавиш
+	dev.MinTapDelay = 50
+
+	control, err := controller.New(dev)
+	if err != nil {
+		return nil, err
+	}
 
 	return &Tracker{
-		tapper: tapper.New(screen),
+		control: control,
 	}, nil
 }
 
@@ -39,7 +44,7 @@ func New(adbEndpoint string, serial string) (*Tracker, error) {
 func (tracker *Tracker) Play(track *Track, speed float32) error {
 	for _, block := range track.blocks {
 		if block.Note != nil {
-			if err := tracker.tapper.TapNote(*block.Note); err != nil {
+			if err := tracker.control.HarpTapNote(block.Note.Octave, block.Note.Tone); err != nil {
 				return err
 			}
 		}

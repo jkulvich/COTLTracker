@@ -10,10 +10,8 @@ import (
 
 func main() {
 
-	flagSerial := flag.String("serial", "", "ADB smartphone serial id")
 	flagTrack := flag.String("track", "", "path to track file")
 	flagSpeed := flag.Float64("speed", 1, "track playing speed")
-	flagAdb := flag.String("adb", "adb", "path where ADB tool located")
 	flag.Parse()
 
 	stave, err := ioutil.ReadFile(*flagTrack)
@@ -28,7 +26,7 @@ func main() {
 	}
 
 	// Создание нового трекер и подключение к устройству
-	tracker, err := cotl.New(*flagAdb, *flagSerial)
+	tracker, err := cotl.New()
 	if err != nil {
 		log.Fatal(err)
 	}
