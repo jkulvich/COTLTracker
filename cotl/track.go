@@ -28,19 +28,25 @@ func NewTrack(stave string) (*Track, error) {
 		return nil, err
 	}
 
-	stave = track.removeComments(stave)
-	stave = strings.ReplaceAll(stave, "\n", " ")
-	runes := strings.Split(stave, " ")
+	for iline, line := range strings.Split(stave, "\n") {
+		if strings.HasPrefix(line, "#") {
+			continue
+		}
 
-	for _, r := range runes {
-		r = strings.TrimSpace(r)
-		if len(r) > 0 {
-			blocks, err := block.NewBlocks(r, track.timing)
-			if err != nil {
-				return nil, err
-			}
-			for _, blk := range blocks {
-				track.blocks = append(track.blocks, blk)
+		runes := strings.Split(line, " ")
+
+		for irune, r := range runes {
+			r = strings.TrimSpace(r)
+			if len(r) > 0 {
+				blocks, err := block.NewBlocks(r, track.timing, iline, irune)
+				if err != nil {
+					return nil, err
+				}
+				for _, blk := range blocks {
+					blk.LineNum = iline + 1
+					blk.PosNum = irune + 1
+					track.blocks = append(track.blocks, blk)
+				}
 			}
 		}
 	}
@@ -62,20 +68,6 @@ func NewTrack(stave string) (*Track, error) {
 	}
 
 	return &track, nil
-}
-
-// removeComments - Удаляет все строки начинающиеся с #
-func (*Track) removeComments(stave string) string {
-	lines := strings.Split(stave, "\n")
-	nlines := make([]string, 0, len(lines))
-
-	for _, line := range lines {
-		if !strings.HasPrefix(line, "#") {
-			nlines = append(nlines, line)
-		}
-	}
-
-	return strings.Join(nlines, "\n")
 }
 
 // applyConfigComments - Применяет конфигурацию описанную в управляющий комментариях #!

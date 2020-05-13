@@ -11,7 +11,8 @@ import (
 func main() {
 
 	flagTrack := flag.String("track", "", "path to track file")
-	flagSpeed := flag.Float64("speed", 1, "track playing speed")
+	flagDelay := flag.Int("delay", 50, "min delay between taps")
+	flagStart := flag.Int("start", 0, "start block position")
 	flag.Parse()
 
 	stave, err := ioutil.ReadFile(*flagTrack)
@@ -26,13 +27,13 @@ func main() {
 	}
 
 	// Создание нового трекер и подключение к устройству
-	tracker, err := cotl.New()
+	tracker, err := cotl.New(*flagDelay)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// Старт воспроизведения композиции
-	if err := tracker.Play(track, float32(*flagSpeed)); err != nil {
+	if err := tracker.Play(track, *flagStart); err != nil {
 		log.Fatal(err)
 	}
 

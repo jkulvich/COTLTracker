@@ -1,94 +1,74 @@
-Утилита для автоматической игры на музыкальных инструментах
-в игре "Sky: Children of the Light"
+Tool to automatic play on musical instruments in
+"Sky: Children of the Light"
 
 ![alt text](./assets/proof.gif)
 
-# Требования
+# Requirements
 
-- Android устройство
-- Включенный режим разработчика
-- Linux и инструменты adb
+- Android device with USB debugging
+- Linux and ADB tools
 
-# Флаги и запуск
+# Flags
 
-## Обязательные
-- **serial** - ADB ID вашего устройства.
-    Можно узнать выполнив `adb devices`
-- **track** - Путь к композиции
+- track - Path to track file
+- delay - Delay in ms between taps
+- start - Number of block where to start
 
-## Опциональные
-- **adb** - Путь расположения adb утилиты.
-- **speed** - Общий множитель для всех задержек.
-    Например, 1.5 ускорит композицию в полтора раза.
-
-Пример для запуска композиции:
+Simple example:
 ```
-./player --serial 6a58b007 --track ./tracks/test.txt
+./player --track ./tracks/zen_zen_zense.txt
 ```
 
-Пример для настройки таймингов, увелечения скорости и сдвига по ноте:
-```
-./player --serial 6a58b007 --track ./tracks/test.txt --timing 300 --speed 1.5 --shift 1
-```
+# Block in tracker file
 
-# Представление композиции
+There are 3 blocks types:
+- **Delay** - several presentation types are available:
+    - **Number** - milliseconds: `200 500`
+    - **tN** - milliseconds in formula 200 * N: `t t5 t10`.        
+    - **Dash** - 200 * dash_count: `- -- ---`.        
+- **Note** - note in char notation like: `C4, A2 G5`
+- **Chord** - chord like: `Am, E, G`
 
-Есть 3 вида блоков в композиции:
-- **Задержка** - может представляться в нескольких вариантах:
-    - **Число** - будет воспринято как миллисекунды: `200 500`
-    - **tN** - будет воспринято как 200 * N: `t t5 t10`.        
-    - **Тире** - несколько последовательных тире,
-        будет воспринято как (200 * количество): `- -- ---`.        
-- **Нота** - буквенно-цифровое представление ноты: `C4, A2 G5`
-- **Аккорд** - буквенное представление аккорда: `Am, E, G`
-
-В общем случае для задержки рекомендуется использовать `timing`
-или тире. В таком случае вы сможете менять время такта.
-
-Кроме этого поддерживаются комментарии, для этого следует начать
-строку с символа `#`.
-
-И управляющие комментарии, позволяющие настроить стандартный
-тайминг и сдвиг для композиции.
+Please, use dash or t for timings, so you can change
+the track speed by changing the `timing` comment.
 
 ```
-#!TIMING:300
+#!TIMING:200
 #!SHIFT:2
 ```
 
-# Транспонирование тона
+# Tone transpose
 
-Утилита сама транспонирует октавы.
-Например, если вы используете ноты `A4 B5 C4`, то все ноты на 4 октаве
-будут транспонированы до первой октавы в игре, а 5 октава станет 2.
+The tool has an auto transpose mechanism.
+So, if you are using `A4 B5 C4` then all notes for 4 octaves will be
+transposed to 1 octave
 ```
 [C4] [  ] [  ] [  ] [  ]
 [A4] [  ] {  } {  } {  }
 {  } {  } {  } {B5} (  )
 ```
 
-Если вы используете только ноты второй октавы и хотите играть
-исключительно на них, тогда используйте флаг `shift` со значением `7`
+If you want to use only second octave then make a `shift` comment
+with value `7`. So, you'll shift all notes for 7 tones.
 
-Например, без флага нота `A4` будет играть так:
+For example, without the comment `A4` position will look like:
 ```
 [  ] [  ] [  ] [  ] [  ]
 [A4] [  ] {  } {  } {  }
 {  } {  } {  } {  } (  )
 ```
-Со сдвигом октавы на вторую так:
+With the comment:
 ```
 [  ] [  ] [  ] [  ] [  ]
 [  ] [  ] {  } {  } {  }
 {  } {  } {A4} {  } (  )
 ```
 
-## Примеры композиций
+## Prepared tracker files
 
-Можно найти в директории tracks
+You can found it in the ./track folder
 
-## Расположение тонов в игре
-
+## Game notes
 
 ```
 [C1] [D1] [E1] [F1] [G1]
@@ -98,12 +78,4 @@
 
 ```
 C1   D1   E1   F1   G1   A1   B1   C2   D2   E2   F2   G2   A2   B2   C3
-```
-
-# TODO
-
-- [ ] Адекватный вывод ошибки со строкой и позицией
-- [ ] Предварительный чекер на ошибки до начала воспроизведения
-- [ ] Отображение прогресса и времени игры
-- [ ] Старт воспроизведения  произвольной точки
-- [ ] Воспроизведение на ПК для предварительного прослушивания 
+``` 
