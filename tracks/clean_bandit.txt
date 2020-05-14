@@ -6,7 +6,7 @@
 # Arranged by @Maple
 # https://youtu.be/IcXAJJKOnn0
 
-#!TIMING:150
+#!TIMING:120
 #!SHIFT:0
 
 # Page 1

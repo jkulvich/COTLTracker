@@ -11,7 +11,7 @@ import (
 func main() {
 
 	flagTrack := flag.String("track", "", "path to track file")
-	flagDelay := flag.Int("delay", 50, "min delay between taps")
+	flagDelay := flag.Int("delay", 80, "min delay between taps")
 	flagStart := flag.Int("start", 0, "start block position")
 	flag.Parse()
 

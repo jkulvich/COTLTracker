@@ -1,7 +1,7 @@
 Tool to automatic play on musical instruments in
 "Sky: Children of the Light"
 
-![alt text](./assets/proof.gif)
+![alt text](./assets/proof2.gif)
 
 # Requirements
 

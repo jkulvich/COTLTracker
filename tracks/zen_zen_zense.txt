@@ -5,7 +5,7 @@
 # Arranged by @Maple
 # https://www.youtube.com/watch?v=Fbuf4Hd3hpw
 
-#!TIMING:200
+#!TIMING:150
 #!SHIFT:0
 
 # Page 1
