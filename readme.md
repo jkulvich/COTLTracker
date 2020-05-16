@@ -13,6 +13,7 @@ Tool to automatic play on musical instruments in
 - track - Path to track file
 - delay - Delay in ms between taps
 - start - Number of block where to start
+- test - Runs a tap test for all Harp buttons
 
 Simple example:
 ```

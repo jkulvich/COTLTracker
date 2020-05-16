@@ -49,7 +49,7 @@ func (ctrl *Controller) harpButtonPos(x, y int) ([2]int, error) {
 
 	// Harp panel margins
 	marginLeft := (scrWidth - panelWidth) / 2.
-	marginTop := 0.
+	marginTop := scrWidth * .04 //< Constant for Harp panel margin
 
 	// Calc screen coordinates
 	pointX := int(marginLeft + btnWidth*float64(x) + btnWidth/2.)

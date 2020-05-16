@@ -13,11 +13,19 @@ func main() {
 	flagTrack := flag.String("track", "", "path to track file")
 	flagDelay := flag.Int("delay", 80, "min delay between taps")
 	flagStart := flag.Int("start", 0, "start block position")
+	flagTest := flag.Bool("test", false, "make a sound test")
 	flag.Parse()
 
-	stave, err := ioutil.ReadFile(*flagTrack)
-	if err != nil {
-		log.Fatal(err)
+	var stave []byte
+
+	if *flagTest {
+		stave = []byte(`C1 - D1 - E1 - F1 - G1 - A1 - B1 - C2 - D2 - E2 - F2 - G2 - A2 - B2 - C3`)
+	} else {
+		var err error
+		stave, err = ioutil.ReadFile(*flagTrack)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	// Парсинг нового трека

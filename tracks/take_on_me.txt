@@ -5,7 +5,7 @@
 # A-ha - Take on me
 # https://sky-music.github.io/songs/Take%20on%20me.html
 
-#!TIMING:300
+#!TIMING:200
 #!SHIFT:0
 
 # Chorus
