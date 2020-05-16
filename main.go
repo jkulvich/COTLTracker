@@ -19,7 +19,8 @@ func main() {
 	var stave []byte
 
 	if *flagTest {
-		stave = []byte(`C1 - D1 - E1 - F1 - G1 - A1 - B1 - C2 - D2 - E2 - F2 - G2 - A2 - B2 - C3`)
+		stave = []byte(`C1 - D1 - E1 - F1 - G1 - A1 - B1 - C2 - D2 - E2 - F2 - G2 - A2 - B2 - C3 ---
+						C1 D1 E1 F1 G1 A1 B1 C2 D2 E2 F2 G2 A2 B2 C3`)
 	} else {
 		var err error
 		stave, err = ioutil.ReadFile(*flagTrack)
