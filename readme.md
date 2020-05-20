@@ -3,20 +3,36 @@ Tool to automatic play on musical instruments in
 
 ![alt text](./assets/proof2.gif)
 
-# Requirements
+# Fast Start To Play
 
-- Android device with USB debugging
-- Linux and ADB tools
+## Preparing
+You'll need any **android device**, **PC** with any available OS and **USB cable** to connect your PC with your smartphone.
+1. [**Enable USB debugging**](https://www.phonearena.com/news/How-to-enable-USB-debugging-on-Android_id53909) on your phone, It is in developer options.
+2. [**Install ADB**](https://www.xda-developers.com/install-adb-windows-macos-linux/) on your PC.
+3. **Plug your phone** with your PC and accept debug permissions if required.
+
+## Configuring
+See latest release with [prebuilds and tracks here](https://github.com/jkulvich/COTLTracker/releases).
+1. **Download** one of these **prebuilt binary** app for your PC OS.
+2. **Download the archive** with musical tracks for player and unpack it near the app.
+
+## Running
+1. On your PC **run a terminal**. If you're on the Windows, just press RMB when Shift pressed and select "Open command window here". You _should be in same directory_ where the app located.
+2. **Execute the command**: `player --test` when the game running on your phone. _Don't forget take a musical instrument in your hands!_
+3. If step 2 is ok and all tones was well, then just type: `player --track tracks/sparkle.txt` and hit Enter.
+
+You're great!
+You can stop the app with CTRL+C.
 
 # Flags
 
 - track - Path to track file
 - delay - Delay in ms between taps
 - start - Number of block where to start
-- test - Runs a tap test for all Harp buttons
+- test - Runs taps test for all musical instrument buttons
 
 Simple example:
-```
+```bash
 ./player --track ./tracks/zen_zen_zense.txt
 ```
 
