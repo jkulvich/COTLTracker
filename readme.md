@@ -3,6 +3,11 @@ Tool to automatic play on musical instruments in
 
 ![alt text](./assets/proof2.gif)
 
+YouTube Demo:
+[River Flows in You | Horn](https://www.youtube.com/watch?v=-RD3mvBv8M8)
+[Sparkle | Piano](https://www.youtube.com/watch?v=9vW_sGyi8EE)
+[Zen Zen Zense | Piano](https://www.youtube.com/watch?v=WTTuqxaN5xg)
+
 # Fast Start To Play
 
 ## Preparing
