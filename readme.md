@@ -72,6 +72,10 @@ You can found it in the ./track folder
 ## Game notes
 
 ```
+
+
+
+
 [C1] [D1] [E1] [F1] [G1]
 [A1] [B1] {C2} {D2} {E2}
 {F2} {G2} {A2} {B2} (C3)
@@ -80,3 +84,6 @@ You can found it in the ./track folder
 ```
 C1   D1   E1   F1   G1   A1   B1   C2   D2   E2   F2   G2   A2   B2   C3
 ``` 
+
+## TODO
+- [ ] Prebuffered console commands (blocks)
