@@ -16,7 +16,9 @@
 4. [Way Back Home | Piano](https://youtu.be/OMZEtMOoTOI)
 5. [River Flows in You | Horn](https://www.youtube.com/watch?v=-RD3mvBv8M8) - :-1: Bad Record
 6. [Sparkle | Piano](https://www.youtube.com/watch?v=9vW_sGyi8EE) - :-1: Bad Record
-7. [Zen Zen Zense | Piano](https://www.youtube.com/watch?v=WTTuqxaN5xg) - :-1: Bad Record
+7. [Zen Zen Zense | Piano](https://www.youtube.com/watch?v=WTTuqxaN5xg) - :-1: Bad 
+
+My source of inspiration for music is [Maple on YouTube](https://www.youtube.com/channel/UCDckPUJKSo9UeVtlY31p3Ag)
 
 # :v: Contact info
 For legal issues, tech questions and chatting.  
