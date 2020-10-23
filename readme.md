@@ -92,7 +92,7 @@ With the comment:
 
 ## Prepared tracker files
 
-You can found it in the [./track](./track) folder
+You can found it in the [./tracks](./tracks) folder
 
 ## Game notes
 
