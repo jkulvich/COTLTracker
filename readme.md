@@ -7,7 +7,9 @@
 # :space_invader: COTLTracker
 > "Sky: Children of The Light" musical assistant tool to automatic play on in-game musical instruments
 
+<center>
 ![alt text](./assets/proof2.gif)
+</center>
 
 :eyes: YouTube Demos:
 1. [Love Scenario | Piano](https://youtu.be/ejYJq7mixME)
