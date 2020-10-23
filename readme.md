@@ -4,12 +4,12 @@
 [![GitHub issues](https://img.shields.io/github/issues/jkulvich/cotltracker)](https://github.com/jkulvich/COTLTracker/issues)
 [![GitHub last commit](https://img.shields.io/github/last-commit/jkulvich/cotltracker)](https://github.com/jkulvich/COTLTracker/commits/master)
 
-Tool to automatic play on musical instruments in
-"Sky: Children of the Light"
+# :space_invader: COTLTracker
+> "Sky: Children of The Light" musical assistant tool to automatic play on in-game musical instruments
 
 ![alt text](./assets/proof2.gif)
 
-YouTube Demos:
+:eyes: YouTube Demos:
 1. [Love Scenario | Piano](https://youtu.be/ejYJq7mixME)
 2. [Girls Like You | Piano](https://youtu.be/8W7AQtnZh0k)
 3. [Counting Stars | Piano](https://youtu.be/JMDFZYuwwz8)
@@ -20,35 +20,35 @@ YouTube Demos:
 
 # :fast_forward: Fast Start To Play
 
-## :iphone::left_right_arrow::computer: Preparing
-You'll need any **android device**, **PC** with any available OS and **USB cable** to connect your PC with your smartphone.
+## :iphone::left_right_arrow::computer: Prepare it
+Please, prepare your android phone and plug it with your PC.  
+**IMPORTANT**: Using of the tool suitable only for android players.
 1. [**Enable USB debugging**](https://www.phonearena.com/news/How-to-enable-USB-debugging-on-Android_id53909) on your phone, It is in developer options.
 2. [**Install ADB**](https://www.xda-developers.com/install-adb-windows-macos-linux/) on your PC.
 3. **Plug your phone** with your PC and accept debug permissions if required.
 
-## :package::arrow_down: Configuring
+## :package::arrow_down: Configure it
 See latest release with [prebuilds and tracks here](https://github.com/jkulvich/COTLTracker/releases).
 1. **Download** one of these **prebuilt binary** app for your PC OS.
-2. **Download the archive** with musical tracks for player and unpack it near the app.
+2. **Download an archive** with musical tracks for player and unpack it near the app.
 
-## :computer::arrow_forward: Running
-1. On your PC **run a terminal**. If you're on the Windows, just press RMB when Shift pressed and select "Open command window here". You _should be in same directory_ where the app located.
-2. **Execute the command**: `player --test` when the game running on your phone. _Don't forget take a musical instrument in your hands!_
-3. If step 2 is ok and all tones was well, then just type: `player --track tracks/sparkle.txt` and hit Enter.
+## :computer::arrow_forward: Run it
+1. **Run a terminal** on your PC. If you're a Windows user, just press RMB when Shift pressed and select "Open command window here". You _should be in same directory_ where the app located.
+2. **Execute next command**: `player --test` when the game running on your phone. _Don't forget take a musical instrument in your hands!_
+3. **Run a lovely track**: When the short test passed type: `player --track tracks/sparkle.txt` and press Enter.
 
-You're great!
-You can stop the app with CTRL+C.
+You can stop the app by CTRL+C.
 
 ## :musical_note: Prepared tracker files
 
-You can found it in the [./tracks](./tracks) folder
+You can find it in the [tracks folder](./tracks)
 
 # :checkered_flag: Flags
 
-- track - Path to track file
-- delay - Delay in ms between taps
-- start - Number of block where to start
-- test - Runs taps test for all musical instrument buttons
+- track - Path to track file (musical file)
+- delay - Delay in ms between taps (default is 80, increment it if your device can't catch all tones)
+- start - Number of block where to start (default is 0)
+- test - Run taps test for all musical instrument buttons (Check it before real usage)
 
 Simple example:
 ```bash
@@ -57,13 +57,13 @@ Simple example:
 
 # :1234: Block in tracker file
 
-There are 3 blocks types:
+There are 3 blocks' types:
 - **Delay** - several presentation types are available:
     - **Number** - milliseconds: `200 500`
-    - **tN** - milliseconds in formula 200 * N: `t t5 t10`.        
-    - **Dash** - 200 * dash_count: `- -- ---`.        
-- **Note** - note in char notation like: `C4, A2 G5`
-- **Chord** - chord like: `Am, E, G`
+    - **tN** - 200ms * N: `t t5 t10`.        
+    - **Dash** - 200ms * dash_count: `- -- ---`.        
+- **Note** - note in char notation like: `C4 A2 G5`
+- **Chord** - chord like: `Am E G` (Not all notes available, use **Note** instead)
 
 Please, use dash or t for timings, so you can change
 the track speed by changing the `timing` comment.
