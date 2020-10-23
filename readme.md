@@ -18,6 +18,14 @@
 6. [Sparkle | Piano](https://www.youtube.com/watch?v=9vW_sGyi8EE) - :-1: Bad Record
 7. [Zen Zen Zense | Piano](https://www.youtube.com/watch?v=WTTuqxaN5xg) - :-1: Bad Record
 
+# :v: Contact info for legal issues, tech questions and chatting
+
+- [Telegram | @jkulvich](https://t.me/jkulvich) - :star: Priority
+- [Instagram | @ijkulvich](https://instagram.com/ijkulvich)
+- [Twitter | @jkulvich](https://twitter.com/jkulvich)
+- [VKontakte | @jkulvich](https://vk.com/jkulvich)
+- [EMail | jkulvichi@gmail.com](mailto:jkulvichi@gmail.com)
+
 # :fast_forward: Fast Start To Play
 
 ## :iphone::left_right_arrow::computer: Prepare it
