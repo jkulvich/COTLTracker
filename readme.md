@@ -19,7 +19,8 @@
 7. [Zen Zen Zense | Piano](https://www.youtube.com/watch?v=WTTuqxaN5xg) - :-1: Bad Record
 
 # :v: Contact info
-For legal issues, tech questions and chatting
+For legal issues, tech questions and chatting.  
+Please, feel free to text me anytime :)
 
 - [Telegram | @jkulvich](https://t.me/jkulvich) - :star: Priority
 - [Instagram | @ijkulvich](https://instagram.com/ijkulvich)
