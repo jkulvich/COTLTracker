@@ -3,10 +3,14 @@ Tool to automatic play on musical instruments in
 
 ![alt text](./assets/proof2.gif)
 
-YouTube Demoz:
-1. [River Flows in You | Horn](https://www.youtube.com/watch?v=-RD3mvBv8M8)
-2. [Sparkle | Piano](https://www.youtube.com/watch?v=9vW_sGyi8EE)
-3. [Zen Zen Zense | Piano](https://www.youtube.com/watch?v=WTTuqxaN5xg)
+YouTube Demos:
+1. [Love Scenario | Piano](https://youtu.be/ejYJq7mixME)
+2. [Girls Like You | Piano](https://youtu.be/8W7AQtnZh0k)
+3. [Counting Stars | Piano](https://youtu.be/JMDFZYuwwz8)
+4. [Way Back Home | Piano](https://youtu.be/OMZEtMOoTOI)
+5. [River Flows in You | Horn](https://www.youtube.com/watch?v=-RD3mvBv8M8)
+6. [Sparkle | Piano](https://www.youtube.com/watch?v=9vW_sGyi8EE)
+7. [Zen Zen Zense | Piano](https://www.youtube.com/watch?v=WTTuqxaN5xg)
 
 # Fast Start To Play
 
@@ -88,15 +92,11 @@ With the comment:
 
 ## Prepared tracker files
 
-You can found it in the ./track folder
+You can found it in the [./track](./track) folder
 
 ## Game notes
 
 ```
-
-
-
-
 [C1] [D1] [E1] [F1] [G1]
 [A1] [B1] {C2} {D2} {E2}
 {F2} {G2} {A2} {B2} (C3)
