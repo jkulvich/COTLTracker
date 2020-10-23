@@ -18,7 +18,8 @@
 6. [Sparkle | Piano](https://www.youtube.com/watch?v=9vW_sGyi8EE) - :-1: Bad Record
 7. [Zen Zen Zense | Piano](https://www.youtube.com/watch?v=WTTuqxaN5xg) - :-1: Bad Record
 
-# :v: Contact info for legal issues, tech questions and chatting
+# :v: Contact info
+For legal issues, tech questions and chatting
 
 - [Telegram | @jkulvich](https://t.me/jkulvich) - :star: Priority
 - [Instagram | @ijkulvich](https://instagram.com/ijkulvich)
