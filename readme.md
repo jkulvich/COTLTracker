@@ -69,11 +69,11 @@ Simple example:
 
 There are 3 blocks' types:
 - **Delay** - several presentation types are available:
-    - **Number** - milliseconds: `200 500`
-    - **tN** - 200ms * N: `t t5 t10`.        
-    - **Dash** - 200ms * dash_count: `- -- ---`.        
+    - **Number** - milliseconds: `200 500` - :-1: Deprecated
+    - **tN** - 200ms * N: `t t5 t10` - :-1: Deprecated
+    - **Dash** - 200ms * dash_count: `- -- ---` - :star: Modern Variant
 - **Note** - note in char notation like: `C4 A2 G5`
-- **Chord** - chord like: `Am E G` (Not all notes available, use **Note** instead)
+- **Chord** - chord like: `Am E G` (Not all notes available, use **Note** instead) - :-1: Deprecated
 
 Please, use dash or t for timings, so you can change
 the track speed by changing the `timing` comment.
