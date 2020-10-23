@@ -82,7 +82,7 @@ the track speed by changing the `timing` comment.
 #!SHIFT:2
 ```
 
-# :arrow_up_small::arrow_down_small: Tone transpose
+# :arrow_up_small::arrow_down_small: Tones transposing
 
 The tool has an auto transpose mechanism.
 So, if you are using `A4 B5 C4` then all notes for 4 octaves will be
