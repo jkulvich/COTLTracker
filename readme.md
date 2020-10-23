@@ -1,3 +1,9 @@
+[![GitHub](https://img.shields.io/github/license/jkulvich/cotltracker)](https://github.com/jkulvich/COTLTracker/blob/master/LICENSE)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/jkulvich/cotltracker)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/jkulvich/cotltracker)](https://github.com/jkulvich/COTLTracker/releases)
+[![GitHub issues](https://img.shields.io/github/issues/jkulvich/cotltracker)](https://github.com/jkulvich/COTLTracker/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/jkulvich/cotltracker)](https://github.com/jkulvich/COTLTracker/commits/master)
+
 Tool to automatic play on musical instruments in
 "Sky: Children of the Light"
 
@@ -94,7 +100,7 @@ With the comment:
 {  } {  } {A4} {  } (  )
 ```
 
-## :information_source: Game notes
+# :information_source: Game notes
 
 ```
 [C1] [D1] [E1] [F1] [G1]
