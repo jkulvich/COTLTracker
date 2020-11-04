@@ -37,6 +37,7 @@ Please, prepare your android phone and plug it with your PC.
 **IMPORTANT**: Using of the tool suitable only for android players.
 1. [**Enable USB debugging**](https://www.phonearena.com/news/How-to-enable-USB-debugging-on-Android_id53909) on your phone, It is in developer options.
 2. [**Install ADB**](https://www.xda-developers.com/install-adb-windows-macos-linux/) on your PC.
+    1. If you are a Windows user, make sure that [**ADB is in %PATH% variable**](https://nerdschalk.com/set-adb-fastboot-path-windows)
 3. **Plug your phone** with your PC and accept debug permissions if required.
 
 ## :package::arrow_down: Configure it
