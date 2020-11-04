@@ -48,7 +48,7 @@ See latest release with [prebuilds and tracks here](https://github.com/jkulvich/
 > Installation folder does not matter. You can drop prebuilt binary and tracks folder in any folder.
 
 ## :computer::arrow_forward: Run it
-1. **Run a terminal** on your PC. If you're a Windows user, just press RMB when Shift pressed and select "Open command window here". You _should be in same directory_ where the app located.
+1. **Run a terminal** on your PC. If you're a Windows user, just press RMB when Shift pressed and select "Open command window here" or "Open PowerShell here". You _should be in same directory_ where the app located.
 2. **Execute next command**: `player --test` when the game running on your phone. _Don't forget take a musical instrument in your hands!_
 3. **Run a lovely track**: When the short test passed type: `player --track tracks/sparkle.txt` and press Enter.
 
