@@ -45,6 +45,8 @@ See latest release with [prebuilds and tracks here](https://github.com/jkulvich/
 1. **Download** one of these **prebuilt binary** app for your PC OS.
 2. **Download an archive** with musical tracks for player and unpack it near the app.
 
+> Installation folder does not matter. You can drop prebuilt binary and tracks folder in any folder.
+
 ## :computer::arrow_forward: Run it
 1. **Run a terminal** on your PC. If you're a Windows user, just press RMB when Shift pressed and select "Open command window here". You _should be in same directory_ where the app located.
 2. **Execute next command**: `player --test` when the game running on your phone. _Don't forget take a musical instrument in your hands!_
