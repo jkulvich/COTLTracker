@@ -1,0 +1,109 @@
+# COTL Tracker
+# Developed by @jkulvich
+# https://github.com/jkulvich/COTLTracker
+
+# Passenger - Let Her Go
+# https://youtu.be/A-uZfzc1Tc8
+
+#!TIMING:200
+#!SHIFT:0
+
+# Intro 1
+A2 - B2 - A2 - G2 - D2 - E2 - G2 ----
+E2 -- B2 -- E2 ----
+A2 - B2 - A2 - G2 - D2 - E2 - G2 ----
+G2 -- E2 - B2 - A2 ----
+A2 - B2 - A2 - G2 - D2 - E2 - G2 ----
+E2 -- G2 - C3 - B2 --
+G2 - A2 -- B2 --------
+
+# Intro 2
+A2 - B2 - A2 - G2 - D2 - E2 - G2 ----
+E2 -- B2 -- E2 ----
+A2 - B2 - A2 - G2 - D2 - E2 - G2 ----
+E2 - B2 -- A2 ----
+A2 - B2 - A2 - G2 - D2 - E2 - G2 ----
+E2 -- G2 - C3 - B2 --
+G2 - A2 -- B2 --------
+
+# Main 1
+B2 - B2 - A2 - B2 - A2 - G2 - G2 -- G2 - G2 - G2 -
+E2 - G2 ----
+A2 - B2 - A2 - G2 - A2 -- A2 - A2 - B2 -- A2 - G2 ----
+A2 - B2 - A2 - G2 - A2 - G2 - E2 - E2 - E2 - D2 - G2 --------
+
+# Main 2
+A2 - B2 - B2 -- A2 - G2 - G2 -- G2 - G2 - G2 -
+E2 - G2 ---- 
+A2 - B2 - A2 - G2 - A2 -- A2 - G2 - B2 - A2 - A2 - G2 ----
+A2 - B2 - A2 - G2 - A2 - G2 - E2 - E2 - E2 - D2 - G2 --------
+
+# Main 3 (0:54)
+A2 - G2 - B2 - A2 - A2 - G2 -
+B1 ---- B1 - B1 -- B1 ---- B1 - B1 -- B1 --
+A1 -- A1 - A1 -- B1 ---- B1 - B1 -- B1 ----
+B1 - B1 -- B1 ----
+G1 - G1 -- G1 --
+F1 -- F1 - F1 -- F1 --
+G1 -- G1 -- F1 -
+
+# Main 4 (1:07)
+D1 -- B1 - B1 - B1 - B1 - B1 - A1 -
+G1 - G1 - G1 ----
+B1 - B1 -- B1 -- A1 -- A1 - A1 -
+G1 - F1 -- F1 ----
+D1 - B1 - A1 -- G1 ----
+E1 - E1 - B1 -- A1 - G1 ---- E1 --------
+
+# Main 5 (1:20)
+B1 - B1 - B1 - B1 - B1 -
+A1 - G1 - G1 - G1 ----
+B1 - B1 -- B1 -- A1 -- A1 - A1 -
+G1 - F1 -- F1 ----
+B1 - B1 - B1 - B1 ----
+G1 -- G1 - A1 - G1 -- E1 --------
+
+# Main 6 (1:31)
+B1 - B1 - B1 - B1 - A1 - G1 - G1 -- G1 - G1 - G1 - E1 - G1 ----
+A1 - B1 - A1 - G1 - A1 -- A1 - A1 - B1 --
+A1 - A1 - G1 ---- A1 - B1 - A1 - G1 - A1 - G1 -
+E1 - E1 - E1 - D1 - G1 --------
+
+# Main 7 (1:44)
+A1 - B1 - B1 -- A1 - G1 - G1 -- G1 - G1 - G1 - E1 - G1 ----
+A1 - B1 - A1 - G1 - A1 -- A1 - A1 - B1 --
+A1 - A1 - G1 ---- A1 - B1 - A1 - G1 - A1 - G1 -
+E1 - E1 - E1 - D1 - G1 --------
+
+# Main 8 (1:58)
+B1 - B1 - B1 - B1 - B1 - A1 - G1 - G1 - G1 ----
+B1 - B1 -- B1 -- A1 -- A1 - A1 - G1 -
+F1 -- F1 -- D1 - B1 - A1 -- G1 ----
+E1 - E1 - B1 -- A1 - G1 ---- E1 --------
+
+# Main 9 (2:11)
+B1 - B1 - B1 - B1 - B1 - A1 - G1 - G1 - G1 ----
+B1 - B1 -- B1 -- A1 -- A1 - A1 - G1 - 
+F1 -- F1 -- B1 - B1 - B1 - B1 - B1 ----
+G1 -- G1 - A1 - G1 -- E1 --------
+
+# Main 10 (2:22)
+B1 - B1 - B1 - B1 - A1 - G1 - G1 -- G1 - G1 - G1 - E1 - G1 ----
+A1 - B1 - A1 - G1 - A1 -- A1 - A1 - B1 -- A1 - A1 - G1 ----
+A1 - B1 - A1 - G1 - A1 - G1 - E1 - E1 - E1 - D1 - G1 --------
+
+# Main 11 (2:35)
+A1 - B1 - B1 -- A1 - G1 - G1 -- G1 - G1 - G1 - E1 - G1 ----
+A1 - B1 - A1 - G1 - A1 -- A1 - A1 - B1 -- A1 - A1 - G1 ----
+A1 - B1 - A1 - G1 - A1 - G1 - E1 - E1 - E1 - D1 - G1 --------
+
+
+
+
+
+
+
+
+
+
+

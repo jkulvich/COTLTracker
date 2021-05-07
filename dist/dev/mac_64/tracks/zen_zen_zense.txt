@@ -1,0 +1,130 @@
+# COTL Tracker
+# Developed by @jkulvich
+# https://github.com/jkulvich/COTLTracker
+
+# Arranged by @Maple
+# https://www.youtube.com/watch?v=Fbuf4Hd3hpw
+
+#!TIMING:150
+#!SHIFT:0
+
+# Page 1
+C4 E4 - G4 - C5 - C4 F4 - D5 -- E5 - G5 -
+-- E5 -- F5 - E5 - C5 --
+C4 E4 - G4 - C5 - C4 F4 - D5 -- E5 - G5 -
+-- E5 -- F5 - E5 - C5 --
+
+# Page 2
+C4 E4 - G4 - C5 - C4 F4 - D5 -- E5 - G5 -
+-- E5 -- F5 - E5 - C5 --
+C4 E4 - G4 - C5 - C4 F4 - D5 -- E5 - G5 -
+C5 G5 - C5 G5 - C5 G5 - C5 G5 - C5 G5 -- C5 G5 --
+
+# Page 3
+C4 E4 - G4 - C5 - C4 F4 - D5 -- E5 - G5 -
+F5 -- E5 -- G5 -- C5 --
+C4 E4 - G4 - C5 - C4 F4 - D5 -- C4 G4 E5 --
+F5 -- E5 -- D5 -- E5 --
+
+# Page 4
+C4 E4 - G4 - C5 - C4 F4 - D5 -- C4 G4 E5 --
+F5 -- E5 -- G5 -- C5 --
+C4 F4 E5 - G5 - D5 - C5 - D5 -- C5 --
+C5 E5 G5 ------ G4 --
+
+# Page 5
+C4 G4 C5 --- D5 - C5 ----
+-- G4 - F5 -- E5 - D5 --
+F4 A4 C5 --------
+---- C5 -- B5 --
+
+# Page 6
+A4 E4 E5 - D5 - E5 - F5 - E5 - D5 - C5 - D5 -
+D4 G4 E5 -- F5 -- E5 - D5 -- C5 -
+C4 F4 --------
+C4 F4 ------ G4 --
+
+# Page 7
+C4 G4 C5 --- G4 - G4 ----
+C4 G4 -- G4 - F5 -- E5 - D5 --
+F4 A4 C5 --------
+F4 A4 ---- C5 -- D5 --
+
+# Page 8
+E4 A4 E5 - D5 - E5 - F5 - E5 - D5 - C5 - D5 -
+D4 G4 E5 - D5 - E5 - F5 - E5 - D5 -- C5 -
+C4 F4 --------
+C4 F4 ---- C5 -- D5 --
+
+# Page 9
+E4 A4 E5 - D5 - E5 - F5 - E5 - D5 - C5 - D5 -
+D4 G4 E5 - D5 - E5 - F5 - E5 - D5 -- C5 -
+C4 F4 --------
+C4 F4 --------
+
+# Page 10
+E4 A4 C5 - D5 - E5 - C5 - D5 - E5 - C4 F4 C5 - D5 -
+E5 - C5 - D5 - E5 - C4 F4 C5 - D5 - E5 - C5 -
+C4 G4 G5 ----- D5 - D4 G4 D5 --
+--------
+
+# Page 11
+E4 A4 C5 - D5 - E5 - C5 - D5 - E5 - C4 F4 C5 - D5 -
+E5 - C5 - D5 - E5 - E4 C5 - F4 D5 - G4 E5 - C4 C5 -
+G4 C5 G5 ----- D5 - D4 G4 D5 --
+G4 - D5 - G5 - B5 --- B5 - A5 -
+
+# Page 12
+E4 G5 B5 - B4 - E5 A5 - G5 B5 -- A5 - F4 F5 C6 --
+-- F4 A5 - C4 - F4 G5 - A4 - C5 - G5 -
+G4 B4 D5 - D4 - G4 D5 - B4 D5 -- E5 - F5 --
+A4 C5 E5 ------ B5 - A5 -
+
+# Page 13
+E4 G5 B5 - B4 - E5 A5 - G5 B5 -- A5 - F4 F5 C6 --
+-- F4 F5 A5 -- F4 G5 -- C4 - E4 -
+G4 C5 E5 ---- E4 G4 --- D5 -
+G4 B4 D5 ---- D4 G4 --- C5 -
+
+# Page 14
+G4 C5 ---- D4 G4 --- D5 -
+G4 B4 D5 ----- C4 C5 - C4 C5 - C4 C5 -
+G4 C5 G5 -- C5 G5 -- C5 G5 -- E5 - D4 G4 D5 -
+- B5 - B5 - C5 -- C4 C5 -- C4 C5 -
+
+# Page 15
+G4 C5 G5 -- C5 G5 - C5 G5 -- E5 -- D4 G4 D5 -
+--- C5 - C5 - D5 - E5 - D5 -
+C4 F4 - C5 - C5 - A4 - C5 - D5 - E5 - D5 -
+D4 G4 - C5 - C5 - A4 - C5 - D5 - E5 - C5 -
+
+# Page 16
+D5 G5 -- E5 - D5 G5 -- G4 E5 -- G4 D5 -
+----- C4 C5 - C4 C5 - C4 C5 -
+G4 C5 G5 -- C5 G5 -- C5 G5 -- E5 - D4 G4 D5 -
+- D5 - D5 - C5 -- C4 C5 -- C4 C5 -
+
+# Page 17
+G4 C5 G5 -- C5 G5 - C5 G5 -- E5 -- D4 G4 D5 -
+--- C5 - C5 - D5 - E5 - D5 -
+C4 F4 - C5 - C5 - A4 - C5 - D5 - E5 - D5 -
+D4 G4 - C5 - C5 - A4 - C5 - D5 - E5 - C4 G4 D5 -
+
+# Page 18
+- C4 C5 - C4 C5 ------
+--- C5 - C5 - D5 - E5 - D5 -
+- C5 - C5 - A4 - C5 - D5 - E5 - D5 -
+- C5 - C5 - A4 - C5 - D5 - E5 - D5 -
+
+# Page 19
+- C5 - C5
+
+
+
+
+
+
+
+
+
+

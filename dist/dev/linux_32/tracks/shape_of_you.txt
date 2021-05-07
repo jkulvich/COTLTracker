@@ -1,0 +1,124 @@
+# COTL Tracker
+# Developed by @jkulvich
+# https://github.com/jkulvich/COTLTracker
+
+# Ed Sheeran - Shape Of You
+# Arranged by @Maple
+# https://youtu.be/sGF0ci_ydmk
+
+#!TIMING:150
+#!SHIFT:0
+
+# Page 1
+E4 A4 A5 --- E4 A4 C6 --- E4 A4 A5 --
+D4 A4 A5 --- D4 A4 C6 --- D4 A4 A5 --
+F4 A4 A5 --- F4 A4 C6 --- F4 A4 A5 --
+D4 G4 B5 --- D4 G4 A5 --- D4 G4 G5 --
+
+# Page 2
+E4 A4 A5 --- E4 A4 C6 --- E4 A4 A5 --
+D4 A4 A5 --- D4 A4 C6 --- D4 A4 A5 --
+F4 A4 A5 --- F4 A4 C6 --- F4 A4 A5 --
+D4 G4 B5 --- D4 G4 A5 --- D4 G4 G5 --
+
+# Page 3
+E4 A4 F5 -- F5 - E4 A4 - F5 - F5 - E4 A4 - F5 -
+D4 A4 F5 - F5 - F5 - D4 A4 - F5 -- D4 A4 F5 - F5 -
+F4 A4 F5 -- F5 - F4 A4 - A5 - A5 - F4 A4 - A5 -
+D4 G4 --- D4 G4 - A5 - F5 - D4 G4 G5 --
+
+# Page 4
+E4 A4 C6 - A5 - A5 - E4 A4 - A5 -- E4 A4 A5 - A5 -
+D4 A4 G5 - G5 - G5 - D4 A4 - G5 -- D4 A4 G5 - F5 -
+F4 A4 G5 -- G5 - F4 A4 - G5 - G5 - F4 A4 - D5 -
+D4 G4 --- D4 G4 - A5 - F5 - D4 G4 G5 -
+
+# Page 5
+E4 A4 A5 - A5 - A5 - E4 A4 - A5 -- E4 A4 A5 - G5 -
+D4 A4 A5 - A5 - A5 - D4 A4 - A5 -- D4 A4 A5 - A5 -
+F4 A4 C6 -- A5 - F4 A4 - G5 - F5 - F4 A4 - A5 -
+D4 G4 --- D4 G4 - G5 - F5 - D4 G4 F5 - F5 -
+
+# Page 6
+E4 A4 F5 --- E4 A4 C6 --- E4 A4 A5 - A5 -
+D4 A4 G5 - G5 - G5 - D4 A4 - G5 -- D4 A4 G5 - G5 -
+F4 A4 G5 -- G5 - F4 A4 - G5 - F5 - F4 A4 - D5 -
+D4 G4 - A4 - A4 - C5 - D5 - D5 --
+
+# Page 7
+E4 A4 D5 -- D5 - E4 A4 - D5 -- E4 A4 C5 --
+D4 A4 D5 -- A5 - D4 A4 - G5 -- D4 A4 --
+F4 A4 G5 - G5 -- F4 A4 A5 - G5 -- F4 A4 F5 --
+D4 G4 D5 -- F5 - D4 G4 - A5 - G5 - D4 G4 G5 --
+
+# Page 8
+E4 A4 D5 --- E4 A4 - C6 - G5 - E4 A4 A5 --
+D4 A4 G5 - F5 - F5 - D4 A4 - D5 -- D4 A4 --
+F4 A4 G5 - G5 -- F4 A4 A5 - G5 -- F4 A4 F5 --
+D4 G4 G5 -- F5 - D4 G4 - D5 -- D4 G4 D5 --
+
+# Page 9
+E4 A4 D5 --- E4 A4 - D5 -- E4 A4 C5 --
+D4 A4 D5 -- A5 - D4 A4 - G5 -- D4 A4 --
+F4 A4 G5 - G5 -- F4 A4 A5 - G5 -- F4 A4 F5 --
+D4 G4 D5 -- F5 - D4 G4 - A5 - G5 - D4 G4 G5 --
+
+# Page 10
+E4 A4 D5 --- E4 A4 - C6 - G5 - E4 A4 A5 --
+D4 A4 G5 - F5 - F5 - D4 A4 - D5 -- D4 A4 D5 --
+F4 A4 C6 - G5 - A5 - F4 A4 - G5 - F5 - F4 A4 F5 --
+D4 G4 D5 -- A4 - A4 - C5 - D5 - D5 --
+
+# Page 11
+E4 A4 --- E4 A4 --- E4 A4 F5 - G5 -
+D4 A4 A5 -- G5 - D4 A4 F5 - F5 -- D4 A4 G5 --
+F4 A4 G5 --- F4 A4 -- D5 - F4 A4 F5 - G5 -
+D4 G4 A5 -- G5 - D4 G4 F5 - F5 -- D4 G4 G5 --
+
+# Page 12
+E4 A4 --- E4 A4 -- D5 - E4 A4 F5 - G5 -
+D4 A4 A5 -- D5 - D4 A4 - F5 -- D4 A4 G5 --
+F4 A4 G5 -- F4 A4 -- F4 A4 F5 - G5 -
+D4 G4 A5 -- G5 - D4 G4 F5 - G5 -- D4 G4 - D5 -
+
+# Page 13
+E4 A4 --- E4 A4 --- E4 A4 F5 --
+D4 A4 A5 -- C6 - D4 A4 A5 - G5 -- D4 A4 F5 --
+F4 A4 G5 --- F4 A4 -- D5 - F4 A4 F5 - G5 -
+D4 G4 A5 -- G5 - D4 G4 - F5 -- D4 G4 G5 --
+
+# Page 14
+E4 A4 D5 -- D5 - E4 A4 D5 - D5 - D5 - E4 A4 F5 - G5 -
+D4 A4 A5 -- D5 - D4 A4 - F5 -- D4 A4 G5 --
+F4 A4 G5 --- F4 A4 -- D5 - F4 A4 F5 - G5 -
+D4 G4 A5 -- G5 - D4 G4 F5 - G5 -- D4 G4 - D5 -
+
+# Page 15
+E4 A4 D5 -- D5 - E4 A4 - F5 -- E4 A4 F5 --
+D4 A4 G5 -- G5 - D4 A4 - A5 -- D4 A4 A5 --
+F4 A4 --- F4 A4 -- D5 - F4 A4 F5 - G5 -
+D4 G4 A5 -- G5 - D4 G4 F5 - G5 -- D4 G4 - D5 -
+
+# Page 16
+E4 A4 D5 -- D5 - E4 A4 - F5 -- E4 A4 F5 --
+D4 A4 G5 -- G5 - D4 A4 - A5 -- D4 A4 A5 --
+F4 A4 --- F4 A4 -- D5 - F4 A4 F5 - G5 -
+D4 G4 A5 -- G5 - D4 G4 F5 - G5 -- D4 G4 - D5 -
+
+# Page 17
+E4 A4 D5 -- D5 - E4 A4 - F5 -- E4 A4 F5 --
+D4 A4 G5 -- G5 - D4 A4 - A5 -- D4 A4 A5 --
+F4 A4 --- F4 A4 -- D5 - F4 A4 F5 - G5 -
+D4 G4 A5 -- G5 - D4 G4 F5 - G5 -- D4 G4 - D5 -
+
+# Page 18
+E4 A4 -- D5 - E4 A4 D5 - D5 - E4 A4 F5 - G5 -
+D4 A4 A5 -- D5 - D4 A4 - F5 -- D4 A4 G5 --
+F4 A4 G5 --- F4 A4 -- D5 - F4 A4 F5 - G5 -
+D4 G4 A5 -- G5 - D4 G4 F5 - G5 -- G5 --
+
+# Page 19
+D4 D5
+
+
+
