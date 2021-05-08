@@ -6,7 +6,7 @@ import (
 	"os"
 	"os/signal"
 	"player/cmdline"
-	"player/services/adb"
+	"player/device"
 )
 
 func main() {
@@ -15,14 +15,14 @@ func main() {
 	_ = cmd
 	fmt.Println(cmd, cli)
 
-	serviceADB, err := adb.NewADBService()
+	dev, err := device.NewDevice()
 	if err != nil {
 		log.Fatalf("ADB Serv: %s", err)
 	}
 
-	fmt.Println(serviceADB.GetVendorModel())
-	fmt.Println(serviceADB.GetScreenSizeAlbum())
-	fmt.Println(serviceADB.Tap(80, 80))
+	fmt.Println(dev.GetVendorModel())
+	fmt.Println(dev.GetScreenSizeAlbum())
+	fmt.Println(dev.Tap(80, 80))
 
 	// Waiting for shutdown signal
 	exitSign := make(chan os.Signal)

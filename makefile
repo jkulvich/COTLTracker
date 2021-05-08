@@ -55,6 +55,7 @@ _WIN32_FOLDER = ${_VERSION_FOLDER}/win_32
 
 _ASSETS_FOLDER = assets
 
+_TRACKS_FOLDER = ${_ASSETS_FOLDER}/tracks
 _MANIFEST = ${_ASSETS_FOLDER}/manifest.xml
 
 _LOGO_BIG_SVG = ${_ASSETS_FOLDER}/logo_big.svg
@@ -94,7 +95,7 @@ help:
 # Build for all platforms
 build: build-linux-64 build-linux-32 build-linux-arm-64 build-linux-arm-32 build-mac-64 build-mac-arm-64 build-win-64 build-win-32
 	@make _clean-up
-	@echo BUILD WAS SUCCESSFULLY, CURRENT VERSION: ${VERSION}
+	@echo BUILD WAS SUCCESSFUL, CURRENT VERSION: ${VERSION}
 .PHONY: build
 
 # Clear ./${_DIST_FOLDER}
@@ -196,14 +197,14 @@ _make-platforms-folders:
 # Copies track folder into platforms folders
 _copy-tracks-to-platforms:
 	@echo Copying tracks to platforms
-	@cp -r ./tracks ./${_LINUX64_FOLDER}
-	@cp -r ./tracks ./${_LINUX32_FOLDER}
-	@cp -r ./tracks ./${_LINUXARM32_FOLDER}
-	@cp -r ./tracks ./${_LINUXARM64_FOLDER}
-	@cp -r ./tracks ./${_MAC64_FOLDER}
-	@cp -r ./tracks ./${_MACARM64_FOLDER}
-	@cp -r ./tracks ./${_WIN64_FOLDER}
-	@cp -r ./tracks ./${_WIN32_FOLDER}
+	@cp -r ./${_TRACKS_FOLDER} ./${_LINUX64_FOLDER}
+	@cp -r ./${_TRACKS_FOLDER} ./${_LINUX32_FOLDER}
+	@cp -r ./${_TRACKS_FOLDER} ./${_LINUXARM32_FOLDER}
+	@cp -r ./${_TRACKS_FOLDER} ./${_LINUXARM64_FOLDER}
+	@cp -r ./${_TRACKS_FOLDER} ./${_MAC64_FOLDER}
+	@cp -r ./${_TRACKS_FOLDER} ./${_MACARM64_FOLDER}
+	@cp -r ./${_TRACKS_FOLDER} ./${_WIN64_FOLDER}
+	@cp -r ./${_TRACKS_FOLDER} ./${_WIN32_FOLDER}
 .PHONY: _copy-tracks-to-platforms
 
 # Clears dev folder inside ${_DIST_FOLDER}

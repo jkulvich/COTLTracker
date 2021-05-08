@@ -1,6 +1,6 @@
-// adb - Service module to communicate with ADB
+// device - Service module to communicate with ADB
 
-package adb
+package device
 
 import (
 	"errors"
@@ -8,18 +8,18 @@ import (
 	"github.com/zach-klippenstein/goadb"
 )
 
-// ADBService - Service to communicate with ADB
-type ADBService struct {
+// Device - Service to communicate with ADB
+type Device struct {
 	client *adb.Adb
 	dev    *adb.Device
 }
 
-// NewADBService - Create new instance of ADB service
-func NewADBService() (*ADBService, error) {
+// NewDevice - Create new instance of ADB service
+func NewDevice() (*Device, error) {
 	// Find & start ADB client
 	client, err := initADB()
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("can't init adb: %s", err))
+		return nil, errors.New(fmt.Sprintf("can't init device: %s", err))
 	}
 
 	// Only 1 device must be connected
@@ -38,7 +38,7 @@ func NewADBService() (*ADBService, error) {
 		return nil, errors.New(fmt.Sprintf("can't init device: device is not online"))
 	}
 
-	return &ADBService{
+	return &Device{
 		client: client,
 		dev:    dev,
 	}, nil
@@ -51,15 +51,15 @@ func initADB() (*adb.Adb, error) {
 
 	// Possible ADB locations
 	adbPaths := []string{
-		"adb",
-		"C:/platform-tools/adb",
-		"C:/ADB/adb",
+		"device",
+		"C:/platform-tools/device",
+		"C:/ADB/device",
 	}
 
-	// Trying to find adb client in PATH
+	// Trying to find device client in PATH
 	client, err := adb.New()
 	if err != nil {
-		// Trying to find adb client in possible paths
+		// Trying to find device client in possible paths
 		for _, adbPath := range adbPaths {
 			client, err = adb.NewWithConfig(adb.ServerConfig{
 				PathToAdb: adbPath,

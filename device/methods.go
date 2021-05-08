@@ -1,4 +1,4 @@
-package adb
+package device
 
 import (
 	"errors"
@@ -9,7 +9,7 @@ import (
 )
 
 // GetVendorModel - Return vendor and model of device
-func (s *ADBService) GetVendorModel() (string, error) {
+func (s *Device) GetVendorModel() (string, error) {
 	// Get device vendor & model
 	resp, err := s.dev.RunCommand("getprop ro.product.vendor.brand && getprop ro.product.model")
 	if err != nil {
@@ -21,7 +21,7 @@ func (s *ADBService) GetVendorModel() (string, error) {
 }
 
 // GetScreenSize - Return actual screen size in pixels
-func (s *ADBService) GetScreenSize() ([2]int, error) {
+func (s *Device) GetScreenSize() ([2]int, error) {
 	// Get device vendor & model
 	resp, err := s.dev.RunCommand("wm size")
 	if err != nil {
@@ -41,7 +41,7 @@ func (s *ADBService) GetScreenSize() ([2]int, error) {
 }
 
 // GetScreenSizeAlbum - Return actual screen size in album mode
-func (s *ADBService) GetScreenSizeAlbum() ([2]int, error) {
+func (s *Device) GetScreenSizeAlbum() ([2]int, error) {
 	sizes, err := s.GetScreenSize()
 	if err != nil {
 		return [2]int{}, err
@@ -55,7 +55,7 @@ func (s *ADBService) GetScreenSizeAlbum() ([2]int, error) {
 }
 
 // Tap - Make fast tap on screen
-func (s *ADBService) Tap(x, y int) error {
+func (s *Device) Tap(x, y int) error {
 	const safeDelay = 40
 	_, err := s.dev.RunCommand(fmt.Sprintf("input swipe %[1]d %[2]d %[1]d %[2]d %[3]d", x, y, safeDelay))
 	if err != nil {
