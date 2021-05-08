@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/signal"
 	"player/cmdline"
+	"player/services/adb"
 )
 
 func main() {
@@ -13,7 +15,14 @@ func main() {
 	_ = cmd
 	fmt.Println(cmd, cli)
 
-	//fmt.Println(color.Colorize(color.Red, "It's OK"))
+	serviceADB, err := adb.NewADBService()
+	if err != nil {
+		log.Fatalf("ADB Serv: %s", err)
+	}
+
+	fmt.Println(serviceADB.GetVendorModel())
+	fmt.Println(serviceADB.GetScreenSizeAlbum())
+	fmt.Println(serviceADB.Tap(80, 80))
 
 	// Waiting for shutdown signal
 	exitSign := make(chan os.Signal)

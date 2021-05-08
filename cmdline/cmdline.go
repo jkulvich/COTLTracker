@@ -1,5 +1,5 @@
-// cmdline - Module to handle CLI interactions.
-// Also, it contains CLI & app documentation
+// cmdline - Module to handle CmdLine interactions.
+// Also, it contains CmdLine & app documentation
 
 package cmdline
 
@@ -12,8 +12,8 @@ import (
 	"runtime"
 )
 
-// CLI - Parsed command line args & flags
-type CLI struct {
+// CmdLine - Parsed command line args & flags
+type CmdLine struct {
 	Doc  struct{} `cmd:"" aliases:"d,about,info,inf,help,h,version,v" help:"Show additional documentation and references" default:"1"`
 	Play struct {
 		Track string `short:"t" help:"Path to track file" required:"" type:"existingfile" placeholder:"path/to/track/file" xor:"track"`
@@ -24,8 +24,8 @@ type CLI struct {
 }
 
 // Parse - Parse command line args into struct
-func Parse() (string, CLI) {
-	cli := CLI{}
+func Parse() (string, CmdLine) {
+	cli := CmdLine{}
 	ctx := kong.Parse(&cli)
 
 	// Handle special commands
