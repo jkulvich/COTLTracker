@@ -15,7 +15,7 @@ func main() {
 	_ = cmd
 	fmt.Println(cmd, cli)
 
-	dev, err := device.NewDevice()
+	dev, err := device.New()
 	if err != nil {
 		log.Fatalf("ADB Serv: %s", err)
 	}

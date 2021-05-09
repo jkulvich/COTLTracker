@@ -1,4 +1,4 @@
-// device - Service module to communicate with ADB
+// device - Module to communicate with ADB & device
 
 package device
 
@@ -14,8 +14,8 @@ type Device struct {
 	dev    *adb.Device
 }
 
-// NewDevice - Create new instance of ADB service
-func NewDevice() (*Device, error) {
+// New - Create new instance of ADB service
+func New() (*Device, error) {
 	// Find & start ADB client
 	client, err := initADB()
 	if err != nil {
