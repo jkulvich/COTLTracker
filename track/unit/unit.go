@@ -31,8 +31,8 @@ type Unit struct {
 	Comment Comment
 }
 
-// NewUnit - Make new unit and detect type from string
-func NewUnit(str string, extra ...Extra) (Unit, error) {
+// New - Make new unit and detect type from string
+func New(str string, extra ...Extra) (Unit, error) {
 	var ext Extra
 	if len(extra) == 1 {
 		ext = extra[0]
