@@ -2,14 +2,14 @@ package parser
 
 import (
 	"fmt"
-	"player/track/unit"
+	"player/tracker/track/unit"
 	"regexp"
 	"strings"
 )
 
 // COTLTrack - Works with COTLTrack files, usually with .txt extension
 type COTLTrack struct {
-	Parser
+	Interface
 }
 
 // NewCOTLTrack - Create a new COTLTrack parser
@@ -32,20 +32,24 @@ func (l *COTLTrack) Unmarshal(data []byte) ([]unit.Unit, error) {
 
 	// Process every line
 	for iLine, line := range lines {
-		// Skip empty lines
+		// Create empty unit
 		if len(line) == 0 {
+			units = append(units, unit.Unit{})
 			continue
 		}
 
-		// Comment lines
+		// Comment line
 		if strings.HasPrefix(line, "#") {
 			u, err := unit.New(line, unit.Extra{Line: iLine})
 			if err != nil {
 				return nil, err
 			}
 			units = append(units, u)
-		} else {
-			// Split other units by space
+			continue
+		}
+
+		// Split other units by space
+		if !strings.HasPrefix(line, "#") {
 			unitsStrings := regexp.MustCompile(`([^\s]+)`).FindAllString(line, -1)
 
 			// Processing every unit and try to create it

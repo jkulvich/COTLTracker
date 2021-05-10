@@ -19,7 +19,7 @@ func NewDelay(str string) (Delay, error) {
 		return Delay(d / 100), nil
 	}
 	// Dash notation
-	if regexp.MustCompile(`-+`).MatchString(str) {
+	if regexp.MustCompile(`^-+$`).MatchString(str) {
 		return Delay(len(str)), nil
 	}
 	// tN notation
