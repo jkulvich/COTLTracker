@@ -230,6 +230,29 @@ func (t *Report) resumeLoop() {
 	}
 	fmt.Println()
 
+	// Check for 2.5 octaves
+	c.Param.Printf("%-15s: ", "Overflow")
+	trk := t.trk.Clone()
+	trk.Normalize()
+	octavesOverflow := -1
+	maxNote, _ := unit.NewNote("C2")
+	for i, u := range trk.Units {
+		if u.Type == unit.TypeNote && u.Note > maxNote {
+			octavesOverflow = i
+			break
+		}
+	}
+	if octavesOverflow == -1 {
+		c.Good.Printf("NO | Track can plays with CotL")
+	} else {
+		c.Warn.Printf("YES | At position %d", octavesOverflow)
+		c.Warn.Printf("\n\t%s", "Octaves overflow detected.")
+		c.Warn.Printf("\n\t%s", "It means, that this track can't be played normal")
+		c.Warn.Printf("\n\t%s", "in Sky: Children of the Light.")
+		c.Warn.Printf("\n\t%s", "Decrease the note to fix.")
+	}
+	fmt.Println()
+
 	t.pos = len(t.trk.Units)
 	t.playing = false
 }

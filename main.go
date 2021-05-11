@@ -1,10 +1,8 @@
 package main
 
 import (
-	"github.com/faiface/beep"
-	"github.com/faiface/beep/speaker"
+	"io/ioutil"
 	"log"
-	"math"
 	"os"
 	"os/signal"
 	"player/cmdline"
@@ -14,24 +12,9 @@ import (
 	"time"
 )
 
-func Noise() beep.Streamer {
-	return beep.StreamerFunc(func(samples [][2]float64) (n int, ok bool) {
-		for i := range samples {
-			p := math.Sin(float64(i * 4))
-			samples[i][0] = p
-			samples[i][1] = p
-		}
-		return len(samples), true
-	})
-}
-
 func main() {
 	// CLI
 	cmd, cli := cmdline.Parse()
-
-	sr := beep.SampleRate(44100)
-	speaker.Init(sr, sr.N(time.Second/10))
-	speaker.Play(beep.Seq(beep.Take(sr.N(1*time.Second), Noise())))
 
 	// Exit signal
 	exitSign := make(chan os.Signal)
@@ -51,9 +34,6 @@ func main() {
 			log.Fatalf("can't load track: %s", err)
 		}
 
-		// Make new slice from original track
-		trk = trk.Sub(cli.Play.Start, trk.Len())
-
 		// Find timing value in track comments or CLI
 		timing := trk.GetTiming()
 		if cli.Play.Tick != -1 {
@@ -66,6 +46,12 @@ func main() {
 		// Normalize track and shift by shift comment
 		trk.Normalize()
 		trk.Shift(trk.GetShift())
+
+		// Additional logger
+		verboseLog := ioutil.Discard
+		if cli.Play.Verbose == true {
+			verboseLog = os.Stdout
+		}
 
 		// Mod specific type of tracker
 		var t tracker.Interface
@@ -80,12 +66,23 @@ func main() {
 				Tick:  timing,
 				Delay: cli.Play.Delay,
 			})
+		case "virtual":
+			t = tracker.NewVirtual(tracker.VirtualConfig{
+				Tick:  timing,
+				Delay: cli.Play.Delay,
+				Log: &verboseLog,
+			})
+		default:
+			panic("can't find module: " + cli.Play.Mod)
 		}
 
 		// Start play
 		if err := t.Play(trk); err != nil {
 			log.Fatalf("can't start playing: %s", err)
 		}
+
+		// Set specific position
+		_ = t.SeekBlock(cli.Play.Start)
 
 		// Wait for finish
 		go func() {

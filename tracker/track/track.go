@@ -26,7 +26,7 @@ func (t *Track) GetTiming() int {
 			return u.Comment.ValueInt()
 		}
 	}
-	return 0
+	return -1
 }
 
 // GetShift - Get track shift.
@@ -74,8 +74,17 @@ func (t *Track) Len() int {
 }
 
 // Sub - Slice new track from original
-func (t *Track) Sub(start, end int) *Track {
+func (t *Track) Sub(start, end int) {
+	t.Units = t.Units[start:end]
+}
+
+// Clone - Clone track
+func (t *Track) Clone() *Track {
+	units := make([]unit.Unit, len(t.Units))
+	for i, u := range t.Units {
+		units[i] = u
+	}
 	return &Track{
-		Units: t.Units[start:end],
+		Units: units,
 	}
 }

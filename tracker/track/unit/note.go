@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 // Note - note in hash number
@@ -15,10 +16,12 @@ type Note uint8
 // If you need to shift octave add 7 like: n += 7.
 func NewNote(str string) (Note, error) {
 	// Checking for note format
-	reg := regexp.MustCompile(`(?i)^([A-H])(\d*)$`)
+	reg := regexp.MustCompile(`(?i)^\$?([A-H])(\d*)$`)
 	if !reg.MatchString(str) {
 		return 0, fmt.Errorf("incorrect note letter format: %s", str)
 	}
+	// Clear string prefix $ for old format
+	str = strings.TrimPrefix(str, "$")
 	// Fetch note components & replace "H" to "B" for more easy processing
 	tone := str[0]
 	octave, _ := strconv.Atoi(str[1:])

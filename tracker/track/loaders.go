@@ -74,7 +74,8 @@ func (t *Track) ToFile(filename string, parser parser.Interface) error {
 	return nil
 }
 
-func (t *Track) LoadHTTP(url string, parser parser.Interface) error {
+// LoadURL - Load track from URL
+func (t *Track) LoadURL(url string, parser parser.Interface) error {
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
