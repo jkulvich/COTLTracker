@@ -17,16 +17,13 @@ type CmdLine struct {
 	Doc struct{} `cmd:"" aliases:"d,about,info,inf,help,h,version,v" help:"Show additional documentation and references" default:"1"`
 
 	Play struct {
-		Track string `short:"t" help:"Path to track file" required:"" type:"existingfile" placeholder:"path/to/file" xor:"track"`
-		Start int    `short:"s" help:"First block position to start playing" default:"0"`
-	} `cmd:"" help:"Start manual player module"`
-
-	Loader string `short:"l" help:"Use specific tracks loader for specific types of trackers' files" enum:"cotl" default:"cotl"`
-
-	Use string `short:"u" help:"Use specific tracker module to play tracks different ways" enum:"stdout" default:"stdout"`
-
-	Delay int `help:"Delay between 'taps' (if available for module)" default:"40"`
-	Tick  int `help:"Time of 'tick' in ms (if available for module)" default:"200"`
+		Track  string `short:"t" help:"Path to track file" required:"" type:"existingfile" placeholder:"path/to/file" xor:"track"`
+		Start  int    `short:"s" help:"First block position to start playing" default:"0"`
+		Delay  int    `short:"d" help:"Delay between 'taps'" default:"40"`
+		Tick   int    `short:"i" help:"Time of 'tick' in ms. 0 will be overridden by track comment or 200 if not specified" default:"0"`
+		Loader string `short:"l" help:"Mod specific tracks loader for specific types of trackers' files" enum:"cotl" default:"cotl"`
+		Mod    string `short:"m" help:"Mod specific tracker module to play tracks different ways" enum:"stdout,info" default:"stdout"`
+	} `cmd:"" help:"Start track file playing"`
 }
 
 // Parse - Parse command line args into struct

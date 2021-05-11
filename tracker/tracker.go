@@ -23,10 +23,12 @@ const (
 // Play and Resume should be async functions and shouldn't block current goroutine
 type Interface interface {
 	// Play - Start async play
+	// Need to be overridden
 	Play(trk *track.Track) error
 	// Pause - Pause playing
 	Pause() error
 	// Resume - Resume async play
+	// Need to be overridden
 	Resume() error
 	// Stop - Pause and set cursor position to start
 	Stop() error
@@ -87,31 +89,18 @@ func (t *tracker) CurrentTime() int {
 }
 
 // Play - Start async playing
-func (t *Stream) Play(trk *track.Track) error {
-	t.trk = trk
-	t.pos = 0
-	t.playing = true
-	go func() {
-		t.resumeLoop()
-		t.playing = false
-	}()
+func (t *tracker) Play(trk *track.Track) error {
+	panic("don't use default realisation of play in tracker")
+}
 
-	return nil
+// Resume - Resume playing
+func (t *tracker) Resume() error {
+	panic("don't use default realisation of resume in tracker")
 }
 
 // Pause - Pause playing
 func (t *tracker) Pause() error {
 	t.playing = false
-	return nil
-}
-
-// Resume - Resume playing
-func (t *tracker) Resume() error {
-	t.playing = true
-	go func() {
-		t.resumeLoop()
-		t.playing = false
-	}()
 	return nil
 }
 
@@ -130,7 +119,7 @@ func (t *tracker) State() State {
 	if t.pos == 0 {
 		return StateStopped
 	}
-	if t.pos >= len(t.trk.Units) {
+	if t.pos > len(t.trk.Units) {
 		return StateFinished
 	}
 	return StatePaused

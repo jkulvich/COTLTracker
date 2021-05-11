@@ -12,15 +12,13 @@ import (
 
 func main() {
 	cmd, cli := cmdline.Parse()
-	_ = cli
-	_ = cmd
 
 	if cmd == "play" {
 		trk := track.New()
 
 		// Configure specific parser
 		var pars parser.Interface
-		switch cli.Loader {
+		switch cli.Play.Loader {
 		case "cotl":
 			pars = parser.NewCOTLTrack()
 		}
@@ -30,13 +28,34 @@ func main() {
 			log.Fatalf("can't load track: %s", err)
 		}
 
-		// Use specific type of tracker
+		// Make new slice from original track
+		trk = trk.Sub(cli.Play.Start, trk.Len())
+
+		// Find timing value in track comments or CLI
+		timing := trk.GetTiming()
+		if cli.Play.Tick != 0 {
+			timing = cli.Play.Tick
+		}
+		if timing == 0 {
+			timing = 200
+		}
+
+		// Normalize track and shift by shift comment
+		trk.Normalize()
+		trk.Shift(trk.GetShift())
+
+		// Mod specific type of tracker
 		var t tracker.Interface
-		switch cli.Use {
+		switch cli.Play.Mod {
 		case "stdout":
 			t = tracker.NewStream(os.Stdout, tracker.StreamConfig{
-				Tick:  cli.Tick,
-				Delay: cli.Delay,
+				Tick:  timing,
+				Delay: cli.Play.Delay,
+			})
+		case "info":
+			t = tracker.NewInfo(os.Stdout, tracker.InfoConfig{
+				Tick:  timing,
+				Delay: cli.Play.Delay,
 			})
 		}
 

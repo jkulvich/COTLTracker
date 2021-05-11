@@ -5,34 +5,32 @@ import (
 	"io"
 	"player/tracker/track"
 	"player/tracker/track/unit"
-	"strings"
 	"time"
 )
 
-// Stream - Stream tracker.
-// It prints minimized COTLTrack file into stream.
-// This tracker created as an example and for debugging purposes.
-type Stream struct {
+// Info - Info tracker.
+// It prints track info like duration, timing, shift and so one into stream.
+type Info struct {
 	tracker
 	// conf - Tracker configuration
-	conf StreamConfig
+	conf InfoConfig
 	// stream - Output stream
 	stream io.Writer
 }
 
-// StreamConfig - Stream tracker configuration
-type StreamConfig struct {
+// InfoConfig - Info tracker configuration
+type InfoConfig struct {
 	// Tick - Length of tick in ms. Default 100
 	Tick int
 	// Delay - Length of delay between taps. Default 0
 	Delay int
 }
 
-// NewStream - Create new virtual tracker
-func NewStream(stream io.Writer, config ...StreamConfig) *Stream {
-	tracker := Stream{
+// NewInfo - Create new virtual tracker
+func NewInfo(stream io.Writer, config ...InfoConfig) *Info {
+	tracker := Info{
 		stream: stream,
-		conf: StreamConfig{
+		conf: InfoConfig{
 			Tick:  0,
 			Delay: 0,
 		},
@@ -53,34 +51,16 @@ func NewStream(stream io.Writer, config ...StreamConfig) *Stream {
 }
 
 // resumeLoop - Start loop of playing
-func (t *Stream) resumeLoop() {
-	for {
-		if !t.playing {
-			break
-		}
-		// Fetch current unit
-		u := t.trk.Units[t.pos]
-		// Play note
-		if u.Type == unit.TypeNote {
-			_, _ = fmt.Fprintf(t.stream, "%s ", u.Note.String())
-			time.Sleep(time.Millisecond * time.Duration(t.conf.Delay))
-		}
-		// Delay
-		if u.Type == unit.TypeDelay {
-			_, _ = fmt.Fprintf(t.stream, "%s ", strings.Repeat("-", int(u.Delay)))
-			time.Sleep(time.Millisecond * time.Duration(t.conf.Tick*int(u.Delay)))
-		}
-		// Increment cursor position
-		t.pos++
-		// Exit by end
-		if t.State() == StateFinished {
-			break
-		}
-	}
+func (t *Info) resumeLoop() {
+	totalTime := time.Duration(t.TotalTime()) * time.Millisecond
+	_, _ = fmt.Fprintf(t.stream, "Duration: %s (%dms)\n", totalTime.String(), totalTime.Milliseconds())
+	_, _ = fmt.Fprintf(t.stream, "Blocks: %d\n", t.trk.Len())
+	_, _ = fmt.Fprintf(t.stream, "Timing: %d\n", t.trk.GetTiming())
+	_, _ = fmt.Fprintf(t.stream, "Shift: %d\n", t.trk.GetShift())
 }
 
 // timeOf - Return time in ms for block at pos
-func (t *Stream) timeOf(pos int) int {
+func (t *Info) timeOf(pos int) int {
 	var total time.Duration
 	for i := 0; i < pos; i++ {
 		u := t.trk.Units[i]
@@ -96,7 +76,7 @@ func (t *Stream) timeOf(pos int) int {
 
 // SeekTime - Set cursor position to specific block at time.
 // Override this realisation.
-func (t *Stream) SeekTime(pos int) error {
+func (t *Info) SeekTime(pos int) error {
 	var total time.Duration
 	for i, u := range t.trk.Units {
 		switch u.Type {
@@ -115,18 +95,18 @@ func (t *Stream) SeekTime(pos int) error {
 
 // TotalTime - Length in ms of current track
 // Override this realisation.
-func (t *Stream) TotalTime() int {
+func (t *Info) TotalTime() int {
 	return t.timeOf(t.trk.Len())
 }
 
 // CurrentTime - Current play time
 // Override this realisation.
-func (t *Stream) CurrentTime() int {
+func (t *Info) CurrentTime() int {
 	return t.timeOf(t.pos)
 }
 
 // Play - Start async playing
-func (t *Stream) Play(trk *track.Track) error {
+func (t *Info) Play(trk *track.Track) error {
 	t.trk = trk
 	t.pos = 0
 	t.playing = true
@@ -138,7 +118,7 @@ func (t *Stream) Play(trk *track.Track) error {
 }
 
 // Resume - Resume playing
-func (t *Stream) Resume() error {
+func (t *Info) Resume() error {
 	t.playing = true
 	go func() {
 		t.resumeLoop()
