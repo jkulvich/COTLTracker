@@ -57,6 +57,10 @@ func (t *Info) resumeLoop() {
 	_, _ = fmt.Fprintf(t.stream, "Blocks: %d\n", t.trk.Len())
 	_, _ = fmt.Fprintf(t.stream, "Timing: %d\n", t.trk.GetTiming())
 	_, _ = fmt.Fprintf(t.stream, "Shift: %d\n", t.trk.GetShift())
+	_, _ = fmt.Fprintf(t.stream, "Delay: %d\n", t.conf.Delay)
+	_, _ = fmt.Fprintf(t.stream, "Tick: %d\n", t.conf.Tick)
+	t.pos = len(t.trk.Units)
+	t.playing = false
 }
 
 // timeOf - Return time in ms for block at pos

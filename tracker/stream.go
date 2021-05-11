@@ -55,7 +55,8 @@ func NewStream(stream io.Writer, config ...StreamConfig) *Stream {
 // resumeLoop - Start loop of playing
 func (t *Stream) resumeLoop() {
 	for {
-		if !t.playing {
+		if !t.playing || t.pos >= len(t.trk.Units) {
+			t.playing = false
 			break
 		}
 		// Fetch current unit

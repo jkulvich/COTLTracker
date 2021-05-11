@@ -119,7 +119,7 @@ func (t *tracker) State() State {
 	if t.pos == 0 {
 		return StateStopped
 	}
-	if t.pos > len(t.trk.Units) {
+	if t.pos >= len(t.trk.Units) {
 		return StateFinished
 	}
 	return StatePaused
@@ -133,7 +133,10 @@ func (t *tracker) SeekBlock(pos int) error {
 
 // TotalBlocks - Count of blocks in current track
 func (t *tracker) TotalBlocks() int {
-	return len(t.trk.Units)
+	if t.trk != nil {
+		return len(t.trk.Units)
+	}
+	return 0
 }
 
 // CurrentBlock - Current block position

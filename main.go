@@ -8,10 +8,15 @@ import (
 	"player/tracker"
 	"player/tracker/track"
 	"player/tracker/track/parser"
+	"time"
 )
 
 func main() {
+	// CLI
 	cmd, cli := cmdline.Parse()
+
+	// Exit signal
+	exitSign := make(chan os.Signal)
 
 	if cmd == "play" {
 		trk := track.New()
@@ -33,10 +38,10 @@ func main() {
 
 		// Find timing value in track comments or CLI
 		timing := trk.GetTiming()
-		if cli.Play.Tick != 0 {
+		if cli.Play.Tick != -1 {
 			timing = cli.Play.Tick
 		}
-		if timing == 0 {
+		if timing == -1 {
 			timing = 200
 		}
 
@@ -59,13 +64,23 @@ func main() {
 			})
 		}
 
+		// Start play
 		if err := t.Play(trk); err != nil {
 			log.Fatalf("can't start playing: %s", err)
 		}
+
+		// Wait for finish
+		go func() {
+			for {
+				if t.State() == tracker.StateFinished {
+					exitSign <- os.Interrupt
+				}
+				time.Sleep(time.Millisecond * 100)
+			}
+		}()
 	}
 
 	// Waiting for shutdown signal
-	exitSign := make(chan os.Signal)
 	signal.Notify(exitSign, os.Interrupt, os.Kill)
 	<-exitSign
 }
