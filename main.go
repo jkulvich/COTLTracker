@@ -1,7 +1,10 @@
 package main
 
 import (
+	"github.com/faiface/beep"
+	"github.com/faiface/beep/speaker"
 	"log"
+	"math"
 	"os"
 	"os/signal"
 	"player/cmdline"
@@ -11,9 +14,24 @@ import (
 	"time"
 )
 
+func Noise() beep.Streamer {
+	return beep.StreamerFunc(func(samples [][2]float64) (n int, ok bool) {
+		for i := range samples {
+			p := math.Sin(float64(i * 4))
+			samples[i][0] = p
+			samples[i][1] = p
+		}
+		return len(samples), true
+	})
+}
+
 func main() {
 	// CLI
 	cmd, cli := cmdline.Parse()
+
+	sr := beep.SampleRate(44100)
+	speaker.Init(sr, sr.N(time.Second/10))
+	speaker.Play(beep.Seq(beep.Take(sr.N(1*time.Second), Noise())))
 
 	// Exit signal
 	exitSign := make(chan os.Signal)
@@ -57,8 +75,8 @@ func main() {
 				Tick:  timing,
 				Delay: cli.Play.Delay,
 			})
-		case "info":
-			t = tracker.NewInfo(os.Stdout, tracker.InfoConfig{
+		case "report":
+			t = tracker.NewReport(tracker.ReportConfig{
 				Tick:  timing,
 				Delay: cli.Play.Delay,
 			})
