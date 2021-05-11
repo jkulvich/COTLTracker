@@ -17,13 +17,13 @@ type CmdLine struct {
 	Doc struct{} `cmd:"" aliases:"d,about,info,inf,help,h,version,v" help:"Show additional documentation and references" default:"1"`
 
 	Play struct {
-		Track   string `short:"t" help:"Path to track file" required:"" type:"existingfile" placeholder:"path/to/file" xor:"track"`
+		Track   string `arg:"" help:"Path to track file or URL with or without file extension" required:""`
 		Start   int    `short:"s" help:"First block position to start playing" default:"0"`
 		Verbose bool   `short:"v" help:"Print additional info while playing"`
 		Delay   int    `short:"d" help:"Delay between 'taps'" default:"40"`
 		Tick    int    `short:"i" help:"Time of 'tick' in ms. -1 will be overridden by track comment or 200 if not specified" default:"-1"`
 		Loader  string `short:"l" help:"Mod specific tracks loader for specific types of trackers' files" enum:"cotl" default:"cotl"`
-		Mod     string `short:"m" help:"Mod specific tracker module to play tracks different ways" enum:"stdout,report,virtual" default:"stdout"`
+		Mod     string `short:"m" help:"Mod specific tracker module to play tracks different ways" enum:"stdout,report,virtual" default:"virtual"`
 	} `cmd:"" help:"Start track file playing"`
 }
 

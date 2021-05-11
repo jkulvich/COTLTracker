@@ -9,6 +9,7 @@ import (
 	"player/tracker"
 	"player/tracker/track"
 	"player/tracker/track/parser"
+	"strings"
 	"time"
 )
 
@@ -19,7 +20,7 @@ func main() {
 	// Exit signal
 	exitSign := make(chan os.Signal)
 
-	if cmd == "play" {
+	if cmd == "play <track>" {
 		trk := track.New()
 
 		// Configure specific parser
@@ -30,7 +31,7 @@ func main() {
 		}
 
 		// Load specific track
-		if err := trk.LoadFile(cli.Play.Track, pars); err != nil {
+		if err := loadTrack(trk, cli.Play.Track, pars); err != nil {
 			log.Fatalf("can't load track: %s", err)
 		}
 
@@ -98,4 +99,26 @@ func main() {
 	// Waiting for shutdown signal
 	signal.Notify(exitSign, os.Interrupt, os.Kill)
 	<-exitSign
+}
+
+func loadTrack(trk *track.Track, filename string, pars parser.Interface) error {
+	// Add default filename
+	if !strings.HasSuffix(filename, ".txt") {
+		filename += ".txt"
+	}
+	// If URL try to load
+	if strings.HasPrefix(filename, "http://") || strings.HasPrefix(filename, "https://") {
+		if err := trk.LoadURL(filename, pars); err != nil {
+			return err
+		}
+	} else {
+		// In other case it is a file path
+		if err := trk.LoadFile(filename, pars); err != nil {
+			baseURL := "https://raw.githubusercontent.com/jkulvich/COTLTracker/master/tracks/"
+			if err := trk.LoadURL(baseURL + filename, pars); err != nil {
+				return err
+			}
+		}
+	}
+	return nil
 }
