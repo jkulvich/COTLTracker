@@ -19,12 +19,12 @@ const (
 )
 
 // Interface - Trackers' interface.
-// Tracker using to manage track playing.
+// Tracker using to Manage track playing.
 // Play and Resume should be async functions and shouldn't block current goroutine
 type Interface interface {
 	// Play - Start async play
 	// Need to be overridden
-	Play(trk *track.Track) error
+	Play(trk track.Track) error
 	// Pause - Pause playing
 	Pause() error
 	// Resume - Resume async play

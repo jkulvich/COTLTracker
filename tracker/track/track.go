@@ -73,11 +73,6 @@ func (t *Track) Len() int {
 	return len(t.Units)
 }
 
-// Sub - Slice new track from original
-func (t *Track) Sub(start, end int) {
-	t.Units = t.Units[start:end]
-}
-
 // Clone - Clone track
 func (t *Track) Clone() *Track {
 	units := make([]unit.Unit, len(t.Units))

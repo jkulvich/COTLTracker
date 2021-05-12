@@ -15,7 +15,7 @@ type Report struct {
 	// conf - Tracker configuration
 	conf ReportConfig
 	// trk - Current track
-	trk *track.Track
+	trk track.Track
 	// pos - Current playing block pos
 	pos int
 	// playing - Current inner state of playing
@@ -39,7 +39,7 @@ func NewReport(config ReportConfig) *Report {
 }
 
 // Play - Start async playing
-func (t *Report) Play(trk *track.Track) error {
+func (t *Report) Play(trk track.Track) error {
 	t.trk = trk
 	go func() {
 		t.resumeLoop()
@@ -112,10 +112,7 @@ func (t *Report) SeekTime(pos int) error {
 
 // TotalBlocks - Count of blocks in current track
 func (t *Report) TotalBlocks() int {
-	if t.trk != nil {
-		return len(t.trk.Units)
-	}
-	return 0
+	return len(t.trk.Units)
 }
 
 // TotalTime - Length in ms of current track
@@ -162,7 +159,7 @@ func (t *Report) resumeLoop() {
 	} else {
 		c.Warn.Printf("%s or %dms | Too long track", totalTime.String(), totalTime.Milliseconds())
 		c.Warn.Printf("\n\t%s", "Your track's duration too long.")
-		c.Warn.Printf("\n\t%s", "It can be hard to manage this track.")
+		c.Warn.Printf("\n\t%s", "It can be hard to Manage this track.")
 	}
 	fmt.Println()
 
@@ -186,7 +183,7 @@ func (t *Report) resumeLoop() {
 		c.Warn.Printf("%dms | Unusual delay value", timing)
 		c.Warn.Printf("\n\t%s", "Usually, value should be between 100ms and 200ms.")
 		c.Warn.Printf("\n\t%s", "Your 'dash' delay is too short or long.")
-		c.Warn.Printf("\n\t%s", "It can cause troubles if you want manage your track more accuracy.")
+		c.Warn.Printf("\n\t%s", "It can cause troubles if you want Manage your track more accuracy.")
 	}
 	fmt.Println()
 
@@ -226,7 +223,7 @@ func (t *Report) resumeLoop() {
 		c.Warn.Printf("\n\t%s", "Usual value is in range 40ms to 100ms for high-latency devices.")
 		c.Warn.Printf("\n\t%s", "Value lower than 40ms can cause 'tap' throttling.")
 		c.Warn.Printf("\n\t%s", "Value greater than 100ms better to replace with 'dashing'.")
-		c.Warn.Printf("\n\t%s", "So you can manage your song more accuracy.")
+		c.Warn.Printf("\n\t%s", "So you can Manage your song more accuracy.")
 	}
 	fmt.Println()
 

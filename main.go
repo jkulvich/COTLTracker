@@ -71,14 +71,14 @@ func main() {
 			t = tracker.NewVirtual(tracker.VirtualConfig{
 				Tick:  timing,
 				Delay: cli.Play.Delay,
-				Log: &verboseLog,
+				Log:   &verboseLog,
 			})
 		default:
 			panic("can't find module: " + cli.Play.Mod)
 		}
 
 		// Start play
-		if err := t.Play(trk); err != nil {
+		if err := t.Play(*trk); err != nil {
 			log.Fatalf("can't start playing: %s", err)
 		}
 
@@ -114,11 +114,13 @@ func loadTrack(trk *track.Track, filename string, pars parser.Interface) error {
 	} else {
 		// In other case it is a file path
 		if err := trk.LoadFile(filename, pars); err != nil {
-			baseURL := "https://raw.githubusercontent.com/jkulvich/COTLTracker/master/tracks/"
-			if err := trk.LoadURL(baseURL + filename, pars); err != nil {
+			baseURL := "https://raw.githubusercontent.com/jkulvich/COTLTracker/master/assets/tracks/"
+			if err := trk.LoadURL(baseURL+filename, pars); err != nil {
 				return err
 			}
 		}
 	}
 	return nil
 }
+
+// TODO: Parser for .html pages like: https://sky-music.github.io/songs/anime/Carole_&_Tuesday__The_Loneliest_Girl.html
