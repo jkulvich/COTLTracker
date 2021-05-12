@@ -1,2 +1,6 @@
+.idea/
+dist/
+assets/icons/
+*.syso
 tracks/test.txt
 tracks.zip

@@ -1,50 +1,126 @@
 package main
 
 import (
-	"flag"
 	"io/ioutil"
 	"log"
-	"player/cotl"
+	"os"
+	"os/signal"
+	"player/cmdline"
+	"player/tracker"
+	"player/tracker/track"
+	"player/tracker/track/parser"
+	"strings"
 	"time"
 )
 
 func main() {
+	// CLI
+	cmd, cli := cmdline.Parse()
 
-	flagTrack := flag.String("track", "", "path to track file")
-	flagDelay := flag.Int("delay", 80, "min delay between taps")
-	flagStart := flag.Int("start", 0, "start block position")
-	flagTest := flag.Bool("test", false, "make a sound test")
-	flag.Parse()
+	// Exit signal
+	exitSign := make(chan os.Signal)
 
-	var stave []byte
+	if cmd == "play <track>" {
+		trk := track.New()
 
-	if *flagTest {
-		stave = []byte(`C1 - D1 - E1 - F1 - G1 - A1 - B1 - C2 - D2 - E2 - F2 - G2 - A2 - B2 - C3 ---
-						C1 D1 E1 F1 G1 A1 B1 C2 D2 E2 F2 G2 A2 B2 C3`)
+		// Configure specific parser
+		var pars parser.Interface
+		switch cli.Play.Loader {
+		case "cotl":
+			pars = parser.NewCOTLTrack()
+		}
+
+		// Load specific track
+		if err := loadTrack(trk, cli.Play.Track, pars); err != nil {
+			log.Fatalf("can't load track: %s", err)
+		}
+
+		// Find timing value in track comments or CLI
+		timing := trk.GetTiming()
+		if cli.Play.Tick != -1 {
+			timing = cli.Play.Tick
+		}
+		if timing == -1 {
+			timing = 200
+		}
+
+		// Normalize track and shift by shift comment
+		trk.Normalize()
+		trk.Shift(trk.GetShift())
+
+		// Additional logger
+		verboseLog := ioutil.Discard
+		if cli.Play.Verbose == true {
+			verboseLog = os.Stdout
+		}
+
+		// Mod specific type of tracker
+		var t tracker.Interface
+		switch cli.Play.Mod {
+		case "stdout":
+			t = tracker.NewStream(os.Stdout, tracker.StreamConfig{
+				Tick:  timing,
+				Delay: cli.Play.Delay,
+			})
+		case "report":
+			t = tracker.NewReport(tracker.ReportConfig{
+				Tick:  timing,
+				Delay: cli.Play.Delay,
+			})
+		case "virtual":
+			t = tracker.NewVirtual(tracker.VirtualConfig{
+				Tick:  timing,
+				Delay: cli.Play.Delay,
+				Log:   &verboseLog,
+			})
+		default:
+			panic("can't find module: " + cli.Play.Mod)
+		}
+
+		// Start play
+		if err := t.Play(*trk); err != nil {
+			log.Fatalf("can't start playing: %s", err)
+		}
+
+		// Set specific position
+		_ = t.SeekBlock(cli.Play.Start)
+
+		// Wait for finish
+		go func() {
+			for {
+				if t.State() == tracker.StateFinished {
+					exitSign <- os.Interrupt
+				}
+				time.Sleep(time.Millisecond * 100)
+			}
+		}()
+	}
+
+	// Waiting for shutdown signal
+	signal.Notify(exitSign, os.Interrupt, os.Kill)
+	<-exitSign
+}
+
+func loadTrack(trk *track.Track, filename string, pars parser.Interface) error {
+	// Add default filename
+	if !strings.HasSuffix(filename, ".txt") {
+		filename += ".txt"
+	}
+	// If URL try to load
+	if strings.HasPrefix(filename, "http://") || strings.HasPrefix(filename, "https://") {
+		if err := trk.LoadURL(filename, pars); err != nil {
+			return err
+		}
 	} else {
-		var err error
-		stave, err = ioutil.ReadFile(*flagTrack)
-		if err != nil {
-			log.Fatal(err)
+		// In other case it is a file path
+		if err := trk.LoadFile(filename, pars); err != nil {
+			baseURL := "https://raw.githubusercontent.com/jkulvich/COTLTracker/master/assets/tracks/"
+			if err := trk.LoadURL(baseURL+filename, pars); err != nil {
+				return err
+			}
 		}
 	}
-
-	// Парсинг нового трека
-	track, err := cotl.NewTrack(string(stave))
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// Создание нового трекер и подключение к устройству
-	tracker, err := cotl.New(*flagDelay)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// Старт воспроизведения композиции
-	if err := tracker.Play(track, *flagStart); err != nil {
-		log.Fatal(err)
-	}
-
-	<-time.After(time.Millisecond * 1000)
+	return nil
 }
+
+// TODO: Parser for .html pages like: https://sky-music.github.io/songs/anime/Carole_&_Tuesday__The_Loneliest_Girl.html
