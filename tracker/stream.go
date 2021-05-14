@@ -12,9 +12,7 @@ import (
 // It prints minimized COTLTrack file into stream.
 // This tracker created as an example and for debugging purposes.
 type Stream struct {
-	Managed
-	// config - Tracker configuration
-	config ManagedConfig
+	Simple
 	// stream - Output stream
 	stream io.Writer
 }
@@ -28,27 +26,25 @@ type StreamConfig struct {
 }
 
 // NewStream - Create new virtual tracker
-func NewStream(stream io.Writer, config StreamConfig) *Managed {
+func NewStream(stream io.Writer, config StreamConfig) *Simple {
 	tracker := &Stream{
-		config: ManagedConfig{
-			Tick:  config.Tick,
-			Delay: config.Delay,
-		},
 		stream: stream,
 	}
-	return Manage(tracker)
+	tracker.Delay = config.Delay
+	tracker.Tick = config.Tick
+	return Simplify(tracker)
 }
 
 // step - Unit play step
-func (t *Stream) step(u unit.Unit) error {
+func (t *Stream) step(data *Simple, u unit.Unit) error {
 	if u.Type == unit.TypeNote {
 		_, _ = fmt.Fprintf(t.stream, "%s ", u.Note.String())
-		time.Sleep(time.Millisecond * time.Duration(t.config.Delay))
+		time.Sleep(time.Millisecond * time.Duration(t.Delay))
 	}
 	// Delay
 	if u.Type == unit.TypeDelay {
 		_, _ = fmt.Fprintf(t.stream, "%s ", strings.Repeat("-", int(u.Delay)))
-		time.Sleep(time.Millisecond * time.Duration(t.config.Tick*int(u.Delay)))
+		time.Sleep(time.Millisecond * time.Duration(t.Tick*int(u.Delay)))
 	}
 	return nil
 }

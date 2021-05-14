@@ -19,34 +19,30 @@ const (
 )
 
 // Interface - Trackers' interface.
-// Tracker using to Manage track playing.
-// Play and Resume should be async functions and shouldn't block current goroutine
+// Play is an async, so you can continue just after call.
 type Interface interface {
 	// Play - Start async play
-	// Need to be overridden
-	Play(trk track.Track) error
+	Play(trk track.Track)
 	// Pause - Pause playing
-	Pause() error
+	Pause()
 	// Resume - Resume async play
-	// Need to be overridden
-	Resume() error
+	Resume()
 	// Stop - Pause and set cursor position to start
-	Stop() error
+	Stop()
 	// State - Tracker's current state like StateStopped, StatePlaying, StatePaused and StateFinished
 	State() State
 	// SeekBlock - Set cursor position to specific block
-	SeekBlock(pos int) error
+	SeekBlock(pos int)
 	// SeekTime - Set cursor position to specific block at track time.
-	// Need to be overridden
-	SeekTime(ms int) error
+	SeekTime(ms int)
 	// TotalBlocks - Count of blocks in current track
 	TotalBlocks() int
 	// TotalTime - Length in ms of current track
-	// Need to be overridden
 	TotalTime() int
 	// CurrentBlock - Current block position
 	CurrentBlock() int
 	// CurrentTime - Current play time
-	// Need to be overridden
 	CurrentTime() int
+	// Error - Return last error happens in the tracker
+	Error(flush ...bool) error
 }

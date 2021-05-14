@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"log"
 	"os"
 	"os/signal"
@@ -48,12 +47,6 @@ func main() {
 		trk.Normalize()
 		trk.Shift(trk.GetShift())
 
-		// Additional logger
-		verboseLog := ioutil.Discard
-		if cli.Play.Verbose == true {
-			verboseLog = os.Stdout
-		}
-
 		// Mod specific type of tracker
 		var t tracker.Interface
 		switch cli.Play.Mod {
@@ -71,19 +64,19 @@ func main() {
 			t = tracker.NewVirtual(tracker.VirtualConfig{
 				Tick:  timing,
 				Delay: cli.Play.Delay,
-				Log:   &verboseLog,
 			})
 		default:
 			panic("can't find module: " + cli.Play.Mod)
 		}
 
 		// Start play
-		if err := t.Play(*trk); err != nil {
+		t.Play(*trk)
+		if err := t.Error(true); err != nil {
 			log.Fatalf("can't start playing: %s", err)
 		}
 
 		// Set specific position
-		_ = t.SeekBlock(cli.Play.Start)
+		t.SeekBlock(cli.Play.Start)
 
 		// Wait for finish
 		go func() {

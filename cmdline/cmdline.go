@@ -19,7 +19,6 @@ type CmdLine struct {
 	Play struct {
 		Track   string `arg:"" help:"Path to track file or URL with or without file extension" required:""`
 		Start   int    `short:"s" help:"First block position to start playing" default:"0"`
-		Verbose bool   `short:"v" help:"Print additional info while playing"`
 		Delay   int    `short:"d" help:"Delay between 'taps'" default:"40"`
 		Tick    int    `short:"i" help:"Time of 'tick' in ms. -1 will be overridden by track comment or 200 if not specified" default:"-1"`
 		Loader  string `short:"l" help:"Mod specific tracks loader for specific types of trackers' files" enum:"cotl" default:"cotl"`

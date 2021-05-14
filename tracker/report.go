@@ -3,7 +3,6 @@ package tracker
 import (
 	"fmt"
 	"gopkg.in/gookit/color.v1"
-	"player/tracker/track"
 	"player/tracker/track/unit"
 	"time"
 )
@@ -11,129 +10,27 @@ import (
 // Report - Report tracker.
 // It prints track info like duration, timing, shift and so one into stream.
 type Report struct {
-	Interface
-	// conf - Tracker configuration
-	conf ReportConfig
-	// trk - Current track
-	trk track.Track
-	// pos - Current playing block pos
-	pos int
-	// playing - Current inner state of playing
-	playing bool
+	Simple
 }
 
-// ReportConfig - Report tracker configuration
+// ReportConfig - Configuration of Report tracker
 type ReportConfig struct {
-	// Tick - Length of tick in ms. Default 100
+	// Tick - Length of tick in ms for delay nodes like 'dashes'
 	Tick int
-	// Delay - Length of delay between taps. Default 0
+	// Delay - Length of delay between taps to prevent taps throttling
 	Delay int
 }
 
 // NewReport - Create new report tracker
-func NewReport(config ReportConfig) *Report {
-	tracker := Report{
-		conf: config,
-	}
-	return &tracker
+func NewReport(config ReportConfig) *Simple {
+	tracker := &Report{}
+	tracker.Delay = config.Delay
+	tracker.Tick = config.Tick
+	return Simplify(tracker)
 }
 
-// Play - Start async playing
-func (t *Report) Play(trk track.Track) error {
-	t.trk = trk
-	go func() {
-		t.resumeLoop()
-		t.playing = false
-	}()
-	return nil
-}
-
-// Pause - Pause playing
-func (t *Report) Pause() error {
-	t.playing = false
-	return nil
-}
-
-// Resume - Resume playing
-func (t *Report) Resume() error {
-	t.playing = true
-	go func() {
-		t.resumeLoop()
-		t.playing = false
-	}()
-	return nil
-}
-
-// Stop - Stop playing
-func (t *Report) Stop() error {
-	t.playing = false
-	t.pos = 0
-	return nil
-}
-
-// State - Return tracker's state
-func (t *Report) State() State {
-	if t.playing {
-		return StatePlaying
-	}
-	if t.pos == 0 {
-		return StateStopped
-	}
-	if t.pos >= len(t.trk.Units) {
-		return StateFinished
-	}
-	return StatePaused
-}
-
-// SeekBlock - Set cursor position to specific block
-func (t *Report) SeekBlock(pos int) error {
-	t.pos = pos
-	return nil
-}
-
-// SeekTime - Set cursor position to specific block at time.
-// Override this realisation.
-func (t *Report) SeekTime(pos int) error {
-	var total time.Duration
-	for i, u := range t.trk.Units {
-		switch u.Type {
-		case unit.TypeDelay:
-			total += time.Millisecond * time.Duration(u.Delay) * time.Duration(t.conf.Tick)
-		case unit.TypeNote:
-			total += time.Millisecond * time.Duration(t.conf.Delay)
-		}
-		if pos < int(total.Milliseconds()) {
-			t.pos = i
-			return nil
-		}
-	}
-	return nil
-}
-
-// TotalBlocks - Count of blocks in current track
-func (t *Report) TotalBlocks() int {
-	return len(t.trk.Units)
-}
-
-// TotalTime - Length in ms of current track
-// Override this realisation.
-func (t *Report) TotalTime() int {
-	return t.timeOf(t.trk.Len())
-}
-
-// CurrentTime - Current play time
-// Override this realisation.
-func (t *Report) CurrentTime() int {
-	return t.timeOf(t.pos)
-}
-
-// CurrentBlock - Current block position
-func (t *Report) CurrentBlock() int {
-	return t.pos
-}
-
-// resumeLoop - Start loop of playing
-func (t *Report) resumeLoop() {
+// beforePlay - Unit play step
+func (t *Report) beforePlay(data *Simple) error {
 	c := struct {
 		Title color.Color
 		Param color.Color
@@ -159,7 +56,7 @@ func (t *Report) resumeLoop() {
 	} else {
 		c.Warn.Printf("%s or %dms | Too long track", totalTime.String(), totalTime.Milliseconds())
 		c.Warn.Printf("\n\t%s", "Your track's duration too long.")
-		c.Warn.Printf("\n\t%s", "It can be hard to Manage this track.")
+		c.Warn.Printf("\n\t%s", "It can be hard to Simplify this track.")
 	}
 	fmt.Println()
 
@@ -183,13 +80,13 @@ func (t *Report) resumeLoop() {
 		c.Warn.Printf("%dms | Unusual delay value", timing)
 		c.Warn.Printf("\n\t%s", "Usually, value should be between 100ms and 200ms.")
 		c.Warn.Printf("\n\t%s", "Your 'dash' delay is too short or long.")
-		c.Warn.Printf("\n\t%s", "It can cause troubles if you want Manage your track more accuracy.")
+		c.Warn.Printf("\n\t%s", "It can cause troubles if you want Simplify your track more accuracy.")
 	}
 	fmt.Println()
 
 	// Timing override
 	c.Param.Printf("%-15s: ", "Default Timing")
-	if timing == t.conf.Tick {
+	if timing == t.Tick {
 		c.Good.Printf("YES | Track plays as expected")
 	} else {
 		c.Warn.Printf("NO | Track plays faster or slower", timing)
@@ -215,7 +112,7 @@ func (t *Report) resumeLoop() {
 
 	// Delay info
 	c.Param.Printf("%-15s: ", "Tap Delay")
-	delay := t.conf.Delay
+	delay := t.Delay
 	if delay >= 40 && delay <= 100 {
 		c.Good.Printf("%d | Tap delay is in normal range", delay)
 	} else {
@@ -223,7 +120,7 @@ func (t *Report) resumeLoop() {
 		c.Warn.Printf("\n\t%s", "Usual value is in range 40ms to 100ms for high-latency devices.")
 		c.Warn.Printf("\n\t%s", "Value lower than 40ms can cause 'tap' throttling.")
 		c.Warn.Printf("\n\t%s", "Value greater than 100ms better to replace with 'dashing'.")
-		c.Warn.Printf("\n\t%s", "So you can Manage your song more accuracy.")
+		c.Warn.Printf("\n\t%s", "So you can Simplify your song more accuracy.")
 	}
 	fmt.Println()
 
@@ -250,21 +147,7 @@ func (t *Report) resumeLoop() {
 	}
 	fmt.Println()
 
-	t.pos = len(t.trk.Units)
 	t.playing = false
-}
-
-// timeOf - Return time in ms for block at pos
-func (t *Report) timeOf(pos int) int {
-	var total time.Duration
-	for i := 0; i < pos; i++ {
-		u := t.trk.Units[i]
-		switch u.Type {
-		case unit.TypeDelay:
-			total += time.Millisecond * time.Duration(u.Delay) * time.Duration(t.conf.Tick)
-		case unit.TypeNote:
-			total += time.Millisecond * time.Duration(t.conf.Delay)
-		}
-	}
-	return int(total.Milliseconds())
+	t.pos = len(t.trk.Units)
+	return nil
 }
