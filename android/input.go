@@ -14,11 +14,23 @@ func (dev *Android) Swipe(x1, y1, x2, y2 int, delay ...int) error {
 		d = delay[0]
 	}
 
-	cmd := fmt.Sprintf("input swipe %d %d %d %d %d", x1, y1, x2, y2, d)
+	cmd := dev.SwipeCmd(x1, y1, x2, y2, d)
 	if _, err := dev.Exec(cmd); err != nil {
 		return err
 	}
 	return nil
+}
+
+// SwipeCmd - Returns swipe command for shell
+func (dev *Android) SwipeCmd(x1, y1, x2, y2 int, delay ...int) string {
+	const safeMinDelay = 40
+
+	d := safeMinDelay
+	if len(delay) > 0 {
+		d = delay[0]
+	}
+
+	return fmt.Sprintf("input swipe %d %d %d %d %d", x1, y1, x2, y2, d)
 }
 
 // Tap - It makes a tap in specific coordinates
@@ -50,4 +62,14 @@ func (dev *Android) FastTap(x, y int, delay ...int) {
 		_ = dev.Swipe(x, y, x, y)
 	}()
 	<-time.After(time.Millisecond * time.Duration(d))
+}
+
+// FastTapCmd - Returns fast tap shell command
+func (dev *Android) FastTapCmd(x, y int, delay ...int) string {
+	d := dev.MinTapDelay
+	if len(delay) > 0 {
+		d = delay[0]
+	}
+
+	return fmt.Sprintf("%s && sleep %f ", dev.SwipeCmd(x, y, x, y), float32(d) / 1000.0)
 }

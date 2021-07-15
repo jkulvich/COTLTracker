@@ -69,6 +69,17 @@ func (ctrl *Controller) HarpTap(x, y int) error {
 	return nil
 }
 
+// HarpTapCmd - Returns harp button tap command for shell
+func (ctrl *Controller) HarpTapCmd(x, y int) (string, error) {
+	pos, err := ctrl.harpButtonPos(x, y)
+	if err != nil {
+		return "", err
+	}
+
+	cmd := ctrl.dev.FastTapCmd(pos[0], pos[1])
+	return cmd, nil
+}
+
 type tone map[uint8][]int
 type octave map[int]tone
 
@@ -102,4 +113,36 @@ func (ctrl *Controller) HarpTapNote(oct int, ton byte) error {
 		return fmt.Errorf("incorrect note tone or octave for play %c%d, use A0-D1", ton, oct)
 	}
 	return ctrl.HarpTap(btn[0], btn[1])
+}
+
+// HarpTapNoteCmd - Returns tap harp button cmd for shell
+func (ctrl *Controller) HarpTapNoteCmd(oct int, ton byte) (string, error) {
+	var octaves = octave{
+		0: tone{
+			'C': []int{0, 0},
+			'D': []int{1, 0},
+			'E': []int{2, 0},
+			'F': []int{3, 0},
+			'G': []int{4, 0},
+			'A': []int{0, 1},
+			'B': []int{1, 1},
+		},
+		1: tone{
+			'C': []int{2, 1},
+			'D': []int{3, 1},
+			'E': []int{4, 1},
+			'F': []int{0, 2},
+			'G': []int{1, 2},
+			'A': []int{2, 2},
+			'B': []int{3, 2},
+		},
+		2: tone{
+			'C': []int{4, 2},
+		},
+	}
+	btn := octaves[oct][ton]
+	if len(btn) != 2 {
+		return "", fmt.Errorf("incorrect note tone or octave for play %c%d, use A0-D1", ton, oct)
+	}
+	return ctrl.HarpTapCmd(btn[0], btn[1])
 }

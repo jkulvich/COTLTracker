@@ -5,6 +5,7 @@ import (
 	"os"
 	"player/android"
 	"player/controller"
+	"strings"
 	"time"
 )
 
@@ -42,6 +43,28 @@ func New(minDelay int) (*Tracker, error) {
 
 // Play - Воспросизовдит записанные аккорды/ноты/задержки
 func (tracker *Tracker) Play(track *Track, start int) error {
+	shellLines := make([]string, 0)
+
+	// Rendering full shell script
+	for i, block := range track.blocks {
+		if i < start {
+			continue
+		}
+
+		if block.Note != nil {
+			if cmd, err := tracker.control.HarpTapNoteCmd(block.Note.Octave, block.Note.Tone); err != nil {
+				return err
+			} else {
+				shellLines = append(shellLines, cmd)
+			}
+		}
+
+		shellLines = append(shellLines, fmt.Sprintf("sleep %f", float32(block.Delay) / 1000.0))
+	}
+
+	cmd := strings.Join(shellLines, " && ")
+	fmt.Println(cmd)
+
 	for i, block := range track.blocks {
 		if i < start {
 			continue
@@ -50,9 +73,10 @@ func (tracker *Tracker) Play(track *Track, start int) error {
 		note := ""
 		if block.Note != nil {
 			note = block.Note.String()
-			if err := tracker.control.HarpTapNote(block.Note.Octave, block.Note.Tone); err != nil {
-				return err
-			}
+			//if err := tracker.control.HarpTapNote(block.Note.Octave, block.Note.Tone); err != nil {
+			//	return err
+			//}
+			<-time.After(time.Duration(40 * 1000000))
 		}
 
 		fmt.Printf("[%06.2f%%] Block <%2s> [%04d] of [%04d] at %03d:%02d\n",
