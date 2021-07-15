@@ -33,3 +33,8 @@ func (dev *Android) ShellName() string {
 func (dev *Android) Exec(command string) (string, error) {
 	return dev.shell.Exec(command)
 }
+
+// ExecSu - It runs a command in su
+func (dev *Android) ExecSu(command string) (string, error) {
+	return dev.shell.ExecSu(command)
+}

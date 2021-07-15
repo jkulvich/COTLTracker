@@ -1,0 +1,165 @@
+# COTL Tracker
+# Developed by @jkulvich
+# https://github.com/jkulvich/COTLTracker
+
+# Arranged by @Maple
+# https://www.youtube.com/watch?v=f9QwUPzqGFc
+
+#!TIMING:150
+#!SHIFT:0
+
+# Page 1
+A1 -- C2 E2 ---- C2 E2 --
+G1 -- B1 D2 ---- B1 D2 --
+C1 -- C2 G1 ---- C2 G1 --
+C1 -- C2 G1 ---- C2 G1 --
+
+# Page 2
+A1 -- C2 E2 ---- C2 E2 --
+G1 -- B1 D2 ---- B1 D2 --
+C1 -- C2 G1 ---- C2 G1 --
+C1 -- C2 G1 ---- C2 G1 --
+
+# Page 3
+A1 -- E1 A1 B1 -- C2 -- A1 E1 D2 - E2 -
+D1 - A2 - D1 G1 -- G2 -- D1 G1 G2 - E2 -
+C1 -- C1 G1 ---- C1 G1 --
+C1 -- C1 G1 ---- C1 G1 --
+
+# Page 4
+A1 -- E1 A1 B1 -- C2 -- E1 A1 D2 --
+D1 E2 - A2 - D1 G1 - G2 --- D1 G1 G2 --
+C1 E2 -- C1 G1 D2 -- E2 -- C1 G1 D2 --
+C1 E2 -- C1 G1 - G2 --- C1 G1 D2 --
+
+# Page 5
+E1 E2 -- E1 A1 - E2 --- E1 A1 E2 --
+D1 - E2 - D1 G1 -- E2 - D2 - D1 G1 - E2 -
+C1 -- C1 G1 ---- C1 G1 --
+C1 -- C1 G1 ---- C1 G1 E2 - D2 -
+
+# Page 6
+E1 E2 - D2 - E1 A1 - E2 -- D2 - E1 A1 - E2 -
+D1 - D2 - D1 G1 -- E2 - D2 - D1 G1 E2 - D2 -
+C1 C2 -- C1 G1 ---- C1 G1 --
+C1 -- C1 G1 ---- C1 G1 G2 --
+
+# Page 7
+E1 A2 -- E1 A1 ---- E1 A1 --
+D1 -- D1 G1 G2 ---- D1 G1 --
+C1 E2 -- C1 G1 ---- C1 G1 --
+C1 -- C1 G1 ---- C1 G1 G2 --
+
+# Page 8
+E1 A2 -- E1 A1 ---- E1 A1 G2 --
+D1 E2 -- D1 G1 --- G2 - D1 G1 G2 --
+C1 G1 A2 --- G2 --- A2 - G2 -
+--------
+
+# Page 9
+E1 E2 -- E1 A1 - E2 --- E1 A1 --
+D1 E2 - E2 - D1 G1 - G2 -- D2 - D1 G1 - D2 -
+C1 D2 -- C1 G1 -- C2 -- C1 G1 --
+C1 E2 - E2 - C1 G1 E2 - G2 -- D2 - C1 G1 - D2 -
+
+# Page 10
+E1 E2 -- E1 A1 -- E2 -- E1 A1 --
+D1 E2 - E2 - D1 G1 E2 - G2 -- D2 - D1 G1 --
+C1 D2 -- C1 G1 - C2 --- C1 G1 C2 --
+C1 -- C1 G1 ---- C1 G1 C2 --
+
+# Page 11
+E1 E2 -- E1 A1 - E2 --- E1 A1 --
+D1 E2 - E2 - D1 G1 - G2 -- D2 - D1 G1 D2 --
+C1 D2 -- C1 G1 -- C2 -- C1 G1 --
+C1 E2 - E2 - C1 G1 E2 - G2 -- D2 - C1 G1 D2 --
+
+# Page 12
+E1 E2 -- E1 A1 -- E2 -- E1 A1 --
+D1 E2 - E2 - D1 G1 E2 - G2 -- D2 - D1 G1 D2 --
+C1 -- C1 G1 C2 ---- C1 G1 --
+C1 -- C1 G1 ---- C1 G1 --
+
+# Page 13
+A1 -- E1 A1 B1 -- C2 -- E1 A1 D2 - E2 -
+D1 - A2 - D1 G1 -- G2 -- D1 G1 G2 - E2 -
+C1 -- C1 G1 ---- C1 G1 --
+C1 -- C1 G1 ---- C1 G1 A1 --
+
+# Page 14
+A1 -- E1 A1 B1 - C2 --- E1 A1 - D2 -
+D1 E2 - A2 - D1 G1 - G2 --- D1 G1 G2 --
+C1 E2 -- C1 G1 D2 - E2 -- D2 - C1 G1 --
+C1 E2 -- C1 G1 - G2 --- C1 G1 D2 --
+
+# Page 15
+E1 E2 -- E1 A1 - E2 --- E1 A1 - D2 -
+D1 E2 - D2 - D1 G1 - E2 -- D2 - D1 G1 E2 --
+C1 -- C1 G1 ---- C1 G1 --
+C1 -- C1 G1 ---- C1 G1 - D2 -
+
+# Page 16
+E1 E2 - D2 - E1 A1 - E2 -- D2 - E1 A1 - E2 -
+D1 - D2 - D1 G1 - E2 -- D2 - D1 G1 E2 - D2 -
+C1 C2 -- C1 G1 ---- C1 G1 --
+C1 -- C1 G1 ---- C1 G1 G2 --
+
+# Page 17
+E1 A2 -- E1 A1 ---- E1 A1 --
+D1 G2 -- D1 G1 ---- D1 G1 --
+C1 E2 -- C1 G1 ---- C1 G1 --
+C1 -- C1 G1 ---- C1 G1 G2 --
+
+# Page 18
+E1 A2 -- E1 A1 ---- E1 A1 G2 --
+D1 E2 -- D1 G1 --- G2 - D1 G1 G2 --
+C1 G1 --- G2 --- A2 - G2 -
+--------
+
+# Page 19
+E1 E2 -- E1 A1 - E2 --- E1 A1 --
+D1 E2 - E2 - D1 G1 - G2 -- D2 - D1 G1 - D2 -
+C1 D2 -- C1 G1 -- C2 -- C1 G1 --
+C1 E2 - E2 - C1 G1 E2 - G2 -- D2 - C1 G1 - D2 -
+
+# Page 20
+E1 E2 -- E1 A1 -- E2 -- E1 A1 --
+D1 E2 - E2 - D1 G1 E2 - G2 -- D2 - D1 G1 --
+C1 D2 -- C1 G1 - C2 --- C1 G1 C2 --
+C1 -- C1 G1 ---- C1 G1 C2 --
+
+# Page 21
+E1 E2 -- E1 A1 - E2 --- E1 A1 --
+D1 E2 - E2 - D1 G1 - G2 -- D2 - D1 G1 D2 --
+C1 D2 -- C1 G1 -- C2 -- C1 G1 --
+C1 E2 - E2 - C1 G1 E2 - G2 -- D2 - C1 G1 D2 --
+
+# Page 22
+E1 E2 -- E1 A1 -- E2 -- E1 A1 --
+D1 E2 - E2 - D1 G1 E2 - G2 -- D2 - D1 G1 D2 --
+C1 -- C1 G1 C2 ---- C1 G1 --
+C1 -- C1 G1 ---- C1 G1 --
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

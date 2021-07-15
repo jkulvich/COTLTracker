@@ -2,6 +2,7 @@ package android
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -65,11 +66,39 @@ func (dev *Android) FastTap(x, y int, delay ...int) {
 }
 
 // FastTapCmd - Returns fast tap shell command
-func (dev *Android) FastTapCmd(x, y int, delay ...int) string {
-	d := dev.MinTapDelay
-	if len(delay) > 0 {
-		d = delay[0]
-	}
+func (dev *Android) FastTapCmd(x, y int) string {
+	return fmt.Sprintf("%s", dev.SwipeCmd(x, y, x, y))
+}
 
-	return fmt.Sprintf("%s && sleep %f ", dev.SwipeCmd(x, y, x, y), float32(d) / 1000.0)
+// TapSu - Fast tap by events via super user
+func (dev *Android) TapSu(x, y int) {
+	lines := []string {
+		"sendevent /dev/input/event3 3 57 55051",
+		"sendevent /dev/input/event3 1 330 1",
+		"sendevent /dev/input/event3 3 53 %[2]d",
+		"sendevent /dev/input/event3 3 54 %[1]d",
+		"sendevent /dev/input/event3 0 0 0",
+		"sendevent /dev/input/event3 3 57 4294967295",
+		"sendevent /dev/input/event3 1 330 0",
+		"sendevent /dev/input/event3 0 0 0",
+	}
+	//go func() {
+	_, _ = dev.ExecSu(fmt.Sprintf(strings.Join(lines, " && "), 2330 - x, y))
+	//}()
+	<-time.After(time.Millisecond * 1)
+}
+
+// TapSuCmd - Fast tap by events via super user
+func (dev *Android) TapSuCmd(x, y int) string {
+	lines := []string {
+		"sendevent /dev/input/event3 3 57 55051",
+		"sendevent /dev/input/event3 1 330 1",
+		"sendevent /dev/input/event3 3 53 %[2]d",
+		"sendevent /dev/input/event3 3 54 %[1]d",
+		"sendevent /dev/input/event3 0 0 0",
+		"sendevent /dev/input/event3 3 57 4294967295",
+		"sendevent /dev/input/event3 1 330 0",
+		"sendevent /dev/input/event3 0 0 0",
+	}
+	return fmt.Sprintf(strings.Join(lines, " && "), 2330 - x, y)
 }

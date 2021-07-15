@@ -45,7 +45,13 @@ func NewADB(shell *Native) (*ADB, error) {
 
 // Exec - It runs command on connected ADB device
 func (adb ADB) Exec(command string) (string, error) {
-	cmd := fmt.Sprintf("%s -s %s shell %s", adb.adb, adb.serial, command)
+	cmd := fmt.Sprintf(`%s -s %s shell "%s"`, adb.adb, adb.serial, command)
+	return adb.shell.Exec(cmd)
+}
+
+func (adb ADB) ExecSu(command string) (string, error) {
+	cmd := fmt.Sprintf(`%s -s %s shell "su -c '%s'"`, adb.adb, adb.serial, command)
+	//fmt.Println(cmd)
 	return adb.shell.Exec(cmd)
 }
 

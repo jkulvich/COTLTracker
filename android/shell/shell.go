@@ -7,6 +7,7 @@ import (
 // Sheller - Universal interface to work with different shells
 type Sheller interface {
 	Exec(string) (string, error)
+	ExecSu(string) (string, error)
 	Type() string
 }
 

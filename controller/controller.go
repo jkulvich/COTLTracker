@@ -29,6 +29,14 @@ func New(dev *android.Android) (*Controller, error) {
 	}, nil
 }
 
+func (ctrl *Controller) Exec(cmd string) (string, error) {
+	return ctrl.dev.Exec(cmd)
+}
+
+func (ctrl *Controller) ExecSu(cmd string) (string, error) {
+	return ctrl.dev.ExecSu(cmd)
+}
+
 // harpButtonPos - It calculates screen position of harp button by button position
 func (ctrl *Controller) harpButtonPos(x, y int) ([2]int, error) {
 	if x < 0 || y < 0 || x > 4 || y > 2 {
@@ -40,7 +48,7 @@ func (ctrl *Controller) harpButtonPos(x, y int) ([2]int, error) {
 	scrHeight := float64(ctrl.screen[1])
 
 	// Harp panel size
-	panelHeight := scrHeight * .57   //< Constant for Harp panel height
+	panelHeight := scrHeight * .51   //< Constant for Harp panel height
 	panelWidth := panelHeight * 1.65 //< Constant for panel width
 
 	// Harp panel buttons sizes
@@ -65,7 +73,8 @@ func (ctrl *Controller) HarpTap(x, y int) error {
 		return err
 	}
 
-	ctrl.dev.FastTap(pos[0], pos[1])
+	//ctrl.dev.FastTap(pos[0], pos[1])
+	ctrl.dev.TapSu(pos[0], pos[1])
 	return nil
 }
 
@@ -76,7 +85,7 @@ func (ctrl *Controller) HarpTapCmd(x, y int) (string, error) {
 		return "", err
 	}
 
-	cmd := ctrl.dev.FastTapCmd(pos[0], pos[1])
+	cmd := ctrl.dev.TapSuCmd(pos[0], pos[1])
 	return cmd, nil
 }
 

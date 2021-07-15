@@ -30,6 +30,12 @@ func (sh Native) Exec(command string) (string, error) {
 	return strings.TrimSpace(string(resp)), nil
 }
 
+// ExecSu - It runs command under current shell
+func (sh Native) ExecSu(command string) (string, error) {
+	// stub
+	return "", nil
+}
+
 // Type - It returns shell name
 func (sh Native) Type() string {
 	return "native"
