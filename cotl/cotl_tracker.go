@@ -59,7 +59,8 @@ func (tracker *Tracker) Play(track *Track, start int) error {
 		}
 
 		if block.Delay != 0 {
-			shellLines = append(shellLines, fmt.Sprintf("sleep %f", float32(block.Delay)/5000.0))
+			//fmt.Println(block.Delay)
+			shellLines = append(shellLines, fmt.Sprintf("sleep %f", float32(block.Delay)/2000.0))
 		}
 	}
 
@@ -97,7 +98,6 @@ func (tracker *Tracker) Play(track *Track, start int) error {
 	//		//if err := tracker.control.HarpTapNote(block.Note.Octave, block.Note.Tone); err != nil {
 	//		//	return err
 	//		//}
-	//		//<-time.After(time.Duration(40 * 1000000))
 	//	}
 	//
 	//	fmt.Printf("[%06.2f%%] Block <%2s> [%04d] of [%04d] at %03d:%02d\n",
