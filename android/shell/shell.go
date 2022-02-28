@@ -35,7 +35,7 @@ func New() (Sheller, error) {
 
 // isAndroid - It checks current OS is Android
 func isAndroid(sh *Native) (bool, error) {
-	resp, err := sh.Exec("uname -o")
+	resp, err := sh.Exec("uname")
 	if err != nil {
 		return false, err
 	}
