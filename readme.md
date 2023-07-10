@@ -4,6 +4,15 @@
 [![GitHub issues](https://img.shields.io/github/issues/jkulvich/cotltracker)](https://github.com/jkulvich/COTLTracker/issues)
 [![GitHub last commit](https://img.shields.io/github/last-commit/jkulvich/cotltracker)](https://github.com/jkulvich/COTLTracker/commits/master)
 
+> **Warning**
+> 
+> - Stable work guaranteed only if you **play on Android** and you **have a Linux (Ubuntu based) device**
+> - For **Windows** users it's possible to **run Linux inside virtual machine** (like Virtual Box)
+> - For **Windows** users it's not possible to run this tool under CMD, PowerShell or WSL (due WSL USB restrictions)
+> - At the moment, this project **have not active maintenance**, use similar tools like:
+>     - [Sky Auto Music: Clicker Studio](https://play.google.com/store/apps/details?id=com.zhukovartemvl.skyautomusic)
+>     - [Sky Music Studio: Auto](https://play.google.com/store/apps/details?id=com.edegrangames.skyMusic)
+
 # :joystick::notes: COTLTracker :: Players' assistant
 "Sky: Children of The Light" musical assistant tool to automatic play on in-game musical instruments
 
