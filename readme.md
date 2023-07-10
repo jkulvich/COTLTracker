@@ -4,6 +4,15 @@
 [![GitHub issues](https://img.shields.io/github/issues/jkulvich/cotltracker)](https://github.com/jkulvich/COTLTracker/issues)
 [![GitHub last commit](https://img.shields.io/github/last-commit/jkulvich/cotltracker)](https://github.com/jkulvich/COTLTracker/commits/master)
 
+> **Note**
+> 
+> Dear users, thank you for your stars and contributions. It's really so important for me. This project was one of first which goal automate musical instrument playing for Sky: Children of The Lights. After time, we have several better alternatives (see links). And I have not time to maintain this tool anymore. It's sad, but this tool isn't actual anymore.
+>
+> Thank you all for your support!  
+> You all are breathtaking ;)
+> 
+> Special thanks to [@MapleStudio](https://www.youtube.com/@MapleStudio) for my inspiration and great tool to learn and play COTL instruments [SkyStudio](https://play.google.com/store/apps/details?id=com.Maple.SkyStudio)
+
 > **Warning**
 > 
 > - Stable work guaranteed only if you **play on Android** and you **have a Linux (Ubuntu based) device**
