@@ -6,7 +6,7 @@
 
 > **Note**
 > 
-> Dear users, thank you for your stars and contributions. It's really so important for me. This project was one of first which goal automate musical instrument playing for Sky: Children of The Lights. After time, we have several better alternatives (see links). And I have not time to maintain this tool anymore. It's sad, but this tool isn't actual anymore.
+> Dear users, thank you for your stars and contributions. It's really so important for me. This project was one of first which goal automate musical instrument playing for Sky: Children of The Lights. After time, we have several better alternatives (see links). And I have no time to maintain this tool anymore. It's sad, but this tool isn't actual anymore.
 >
 > Thank you all for your support!  
 > You all are breathtaking ;)
