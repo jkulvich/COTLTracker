@@ -13,7 +13,16 @@ func (dev *Android) ScreenSize() ([2]int, error) {
 		return [2]int{}, err
 	}
 
-	parsed := regexp.MustCompile(`(\d+)x(\d+)`).FindStringSubmatch(res)
+	// search for overrided size if available
+	parsed := regexp.MustCompile(`Override size: (\d+)x(\d+)`).FindStringSubmatch(res)
+	if len(parsed) == 3 {
+		w, _ := strconv.Atoi(parsed[1])
+		h, _ := strconv.Atoi(parsed[2])
+		return [2]int{w, h}, nil
+	}
+
+	// search for any available size
+	parsed = regexp.MustCompile(`(\d+)x(\d+)`).FindStringSubmatch(res)
 	if len(parsed) == 3 {
 		w, _ := strconv.Atoi(parsed[1])
 		h, _ := strconv.Atoi(parsed[2])
