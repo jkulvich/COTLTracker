@@ -32,15 +32,16 @@ func NewTrack(stave string) (*Track, error) {
 // This is a very-very crunchy parser, but it is quick hack to work with initially unsupported format :)
 func NewTrackFromSkyMusicSheet(stave string) (*Track, error) {
 	var parties []struct {
-		Name         string `json:"name"`
-		Author       string `json:"author"`
-		TanscribedBy string `json:"transcribedBy"`
-		IsComposed   bool   `json:"isComposed"`
-		BpM          int    `json:"bpm"`
-		BitsPerPage  int    `json:"bitsPerPage"`
-		PitchLevel   int    `json:"pitchLevel"`
-		IsEncrypted  bool   `json:"isEncrypted"`
-		SongNotes    []struct {
+		CotlTrackerSpeedup float32 `json:"cotltrackerSpeedup"`
+		Name               string  `json:"name"`
+		Author             string  `json:"author"`
+		TanscribedBy       string  `json:"transcribedBy"`
+		IsComposed         bool    `json:"isComposed"`
+		BpM                int     `json:"bpm"`
+		BitsPerPage        int     `json:"bitsPerPage"`
+		PitchLevel         int     `json:"pitchLevel"`
+		IsEncrypted        bool    `json:"isEncrypted"`
+		SongNotes          []struct {
 			Time int    `json:"time"`
 			Key  string `json:"key"`
 		} `json:"songNotes"`
@@ -63,13 +64,18 @@ func NewTrackFromSkyMusicSheet(stave string) (*Track, error) {
 		timing: 200,
 	}
 
+	if part.CotlTrackerSpeedup == 0 {
+		// delay compensation from ADB input
+		part.CotlTrackerSpeedup = 1.11
+	}
+
 	// iterate over notes and create blocks
 	previousTime := 0
 	posCounter := 0
 	for iNote, note := range part.SongNotes {
 		if previousTime < note.Time {
 			delayTime := note.Time - previousTime
-			delayTime = int(float32(delayTime) * 0.9) //< delay compensation from ADB input
+			delayTime = int(float32(delayTime) / part.CotlTrackerSpeedup)
 			delay, err := block.NewDelay(strconv.Itoa(delayTime), 0)
 			if err != nil {
 				return nil, err
