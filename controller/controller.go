@@ -2,13 +2,21 @@ package controller
 
 import (
 	"fmt"
+	"math/rand"
 	"player/android"
+	"time"
 )
+
+var random = rand.New(rand.NewSource(time.Now().Unix()))
 
 // Controller - The structure to control "Children Of The Light" gameplay
 type Controller struct {
-	dev    *android.Android
+	// dev represents controllable device
+	dev *android.Android
+	// screen defines actual screen size to calculate buttons area
 	screen [2]int
+	// spread defines random +/- offset for x/y tap coordinates (x/y+-spread)
+	spread int
 }
 
 // New - It creates a new controller instance
@@ -26,6 +34,7 @@ func New(dev *android.Android) (*Controller, error) {
 	return &Controller{
 		dev:    dev,
 		screen: screen,
+		spread: 5, //< constant spread to bypass various in-game checks
 	}, nil
 }
 
@@ -55,7 +64,11 @@ func (ctrl *Controller) harpButtonPos(x, y int) ([2]int, error) {
 	pointX := int(marginLeft + btnWidth*float64(x) + btnWidth/2.)
 	pointY := int(marginTop + btnHeight*float64(y) + btnHeight/2.)
 
-	return [2]int{pointX, pointY}, nil
+	// Get random spread offset
+	offsetX := random.Intn(ctrl.spread*2+1) - ctrl.spread
+	offsetY := random.Intn(ctrl.spread*2+1) - ctrl.spread
+
+	return [2]int{pointX + offsetX, pointY + offsetY}, nil
 }
 
 // HarpTap - It taps on harp button
