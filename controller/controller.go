@@ -78,8 +78,7 @@ func (ctrl *Controller) HarpTap(x, y int) error {
 		return err
 	}
 
-	// ctrl.dev.FastTap(pos[0], pos[1])
-	ctrl.dev.MultiTouchTap(pos[0], pos[1])
+	ctrl.dev.FastTap(pos[0], pos[1])
 	return nil
 }
 
