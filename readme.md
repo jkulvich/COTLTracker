@@ -22,6 +22,8 @@
 >     - [Sky Auto Music: Clicker Studio](https://play.google.com/store/apps/details?id=com.zhukovartemvl.skyautomusic)
 >     - [Sky Music Studio: Auto](https://play.google.com/store/apps/details?id=com.edegrangames.skyMusic)
 
+> :sparkles: COTLTracker can run Sky Music Sheet Maker format!
+
 # :joystick::notes: COTLTracker :: Players' assistant
 "Sky: Children of The Light" musical assistant tool to automatic play on in-game musical instruments
 
