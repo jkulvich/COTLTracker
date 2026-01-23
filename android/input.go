@@ -51,3 +51,17 @@ func (dev *Android) FastTap(x, y int, delay ...int) {
 	}()
 	<-time.After(time.Millisecond * time.Duration(d))
 }
+
+func (dev *Android) MultiTouchTap(x, y int, delay ...int) {
+	d := dev.MinTapDelay
+	if len(delay) > 0 {
+		d = delay[0]
+	}
+
+	go func() {
+		cmd := fmt.Sprintf("sendevent /dev/input/eventX 3 57 0 && sendevent /dev/input/eventX 3 53 %d && sendevent /dev/input/eventX 3 54 %d && sendevent /dev/input/eventX 0 2 0 && sendevent /dev/input/eventX 3 57 -1 && /dev/input/eventX 0 2 0", x, y)
+		res, err := dev.Exec(cmd)
+		fmt.Println(res, err)
+	}()
+	<-time.After(time.Millisecond * time.Duration(d))
+}
