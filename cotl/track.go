@@ -107,6 +107,24 @@ func NewTrackFromSkyMusicSheet(stave string) (*Track, error) {
 			"1Key12": "A1",
 			"1Key13": "B1",
 			"1Key14": "C2",
+
+			"2Key0": "C0",
+			"2Key1": "D0",
+			"2Key2": "E0",
+			"2Key3": "F0",
+			"2Key4": "G0",
+
+			"2Key5": "A0",
+			"2Key6": "B0",
+			"2Key7": "C1",
+			"2Key8": "D1",
+			"2Key9": "E1",
+
+			"2Key10": "F1",
+			"2Key11": "G1",
+			"2Key12": "A1",
+			"2Key13": "B1",
+			"2Key14": "C2",
 		}
 		note, err := block.NewNote(mapping[note.Key])
 		if err != nil {
