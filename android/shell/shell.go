@@ -23,7 +23,7 @@ func New() (Sheller, error) {
 	}
 
 	if !android {
-		sh, err := NewADB(native)
+		sh, err := NewGADB(native)
 		if err != nil {
 			return nil, err
 		}

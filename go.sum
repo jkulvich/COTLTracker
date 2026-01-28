@@ -1,3 +1,5 @@
+github.com/electricbubble/gadb v0.1.0 h1:h7RKlToMlFtGW4rUkAd4GSiFAHioMH5Nx7jtbb2nKi4=
+github.com/electricbubble/gadb v0.1.0/go.mod h1:3293YJ6OWHv/Q6NA5dwSbK43MbmYm8+Vz2d7h5J3IA8=
 github.com/jkulvich/goandroid v0.0.0-20200411152119-91f1624cd8c8 h1:p9AOc5OTIAyccCXThLQbV7Ol2F8lwRVLOHxbURREyFw=
 github.com/jkulvich/goandroid v0.0.0-20200411152119-91f1624cd8c8/go.mod h1:jurSTkbm6jAdFQsHCO9sMaXaDm/nwxJKEO7um4ka/yU=
 github.com/kunaldawn/goandroid v0.0.0-20190729171649-028fd47d5f30 h1:VOIrapkfBh8ESftTSYNe6ZJi4zWUQpwQgh6bS3d5nfI=
