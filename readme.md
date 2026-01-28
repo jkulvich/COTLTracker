@@ -15,14 +15,16 @@
 
 > **Warning**
 > 
-> - Stable work guaranteed only if you **play on Android** and you **have a Linux (Ubuntu based) device**
-> - For **Windows** users it's possible to **run Linux inside virtual machine** (like Virtual Box)
-> - For **Windows** users it's not possible to run this tool under CMD, PowerShell or WSL (due WSL USB restrictions)
+> - Stable work guaranteed only if you **play on Android** ~~and you **have a Linux (Ubuntu based) device**~~
+> - ~~For **Windows** users it's possible to **run Linux inside virtual machine** (like Virtual Box)~~
+> - ~~For **Windows** users it's not possible to run this tool under CMD, PowerShell or WSL (due WSL USB restrictions)~~
 > - At the moment, this project **have not active maintenance**, use similar tools like:
 >     - [Sky Auto Music: Clicker Studio](https://play.google.com/store/apps/details?id=com.zhukovartemvl.skyautomusic)
 >     - [Sky Music Studio: Auto](https://play.google.com/store/apps/details?id=com.edegrangames.skyMusic)
 
 > :sparkles: COTLTracker can run Sky Music Sheet Maker format!
+> 
+> :sparkles: COTLTracker now works on Windows, Mac, and Linux without ADB installed!
 
 # :joystick::notes: COTLTracker :: Players' assistant
 "Sky: Children of The Light" musical assistant tool to automatic play on in-game musical instruments
