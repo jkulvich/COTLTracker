@@ -16,12 +16,12 @@ type GADB struct {
 func NewGADB(_ *Native) (*GADB, error) {
 	adb, err := gadb.NewClient()
 	if err != nil {
-		return nil, fmt.Errorf("unable to create gadb client: %w")
+		return nil, fmt.Errorf("unable to create gadb client: %w", err)
 	}
 
 	devices, err := adb.DeviceList()
 	if err != nil {
-		return nil, fmt.Errorf("unable to get list of devices: %w")
+		return nil, fmt.Errorf("unable to get list of devices: %w", err)
 	}
 
 	if len(devices) == 0 {
